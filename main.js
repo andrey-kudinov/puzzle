@@ -90,7 +90,7 @@ async function puzzleStart(response) {
         <div class="intensive-puzzle_item-num">1</div>
       </div>
       <div class="intensive-puzzle_item-second">
-        <img src="/images/1.jpg" alt="" />
+        <img src="./images/1.jpg" alt="" />
       </div>
     </div>`;
 
@@ -150,7 +150,7 @@ async function puzzleStart(response) {
                                                           <div class="intensive-puzzle_item-num">${i + 1}</div>
                                                       </div>
                                                       <div class="intensive-puzzle_item-second">
-                                                          <img src="/images/${i + 2}.jpg" alt="">
+                                                          <img src="./images/${i + 2}.jpg" alt="">
                                                       </div>
                                                   </div>`;
     document.querySelector(".intensive-test__puzzle").innerHTML += puzzleHTML;
@@ -182,7 +182,7 @@ async function puzzleStart(response) {
         document.querySelector(".step2-container__progress-caption").textContent = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
         document.querySelector(".step3-container__progress-bar_green").style.width = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
         answer.querySelector(".intensive-test__input-check").innerHTML =
-          '<img class="intensive-test__input-img intensive-test__input-check-error" src="/images/intensive-test-input-checked.svg" alt="">';
+          '<img class="intensive-test__input-img intensive-test__input-check-error" src="./images/intensive-test-input-checked.svg" alt="">';
         comment.classList.add("question-container__comment");
         comment.innerHTML = `<div class="question-container__comment-title">Comment correct</div></div><div class="question-container__comment-text">Вопрос уровня ${test[question_id].difficulty}</div>`;
         answer.classList.add("intensive-test__input-container-correct");
@@ -205,7 +205,7 @@ async function puzzleStart(response) {
         }
       } else {
         answer.querySelector(".intensive-test__input-check").innerHTML =
-          '<img class="intensive-test__input-img intensive-test__input-check-error" src="/images/intensive-test-input-error.svg" alt="">';
+          '<img class="intensive-test__input-img intensive-test__input-check-error" src="./images/intensive-test-input-error.svg" alt="">';
         comment.innerText = `Попробуй еще раз!`;
         comment.classList.add("question-container__comment_error");
         document.querySelectorAll(".intensive-test__input-container").forEach(function (item, index) {
