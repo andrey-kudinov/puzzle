@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png" />
+    <link rel="manifest" href="./images/site.webmanifest" />
+    <link rel="mask-icon" href="./images/safari-pinned-tab.svg" color="#5bbad5" />
+    <link rel="shortcut icon" href="./images/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#2d89ef" />
+    <meta name="msapplication-config" content="./images/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Пазл" />
+    <title>Пазл</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./main2.js"></script>
+  </head>
+  <body>
+    <div class="content-grid">
+      <div class="content-wrap">
+        <div class="buttons-wrap">
+          <div class="btn-caption intensive-container__caption">
+            <span>Выбор категории</span>
+            <img src="./images/icon-arrow-down.svg" alt="" />
+          </div>
+          <div class="btn-group">
+            <button class="btn-choose btn" data-id="27">ANIMALS</button>
+            <button class="btn-choose btn" data-id="12">MUSIC</button>
+            <button class="btn-choose btn" data-id="21">SPORTS</button>
+            <button class="btn-choose btn" data-id="14">TV</button>
+            <button class="btn-choose btn" data-id="23">HISTORY</button>
+            <button class="btn-choose btn" data-id="11">FILM</button>
+            <button class="btn-choose btn" data-id="26">CELEBS</button>
+            <button class="btn-choose btn" data-id="24">POLITICS</button>
+            <button class="btn-choose btn" data-id="28">VEHICLES</button>
+            <button class="btn-choose btn" data-id="29">COMICS</button>
+            <button class="btn-restart btn" onClick="window.location.reload()">RESTART</button>
+          </div>
+        </div>
+
+        <div class="intensive-menu__info-wrap intensive-test-menu__info-wrap" tabindex="0" aria-hidden="true">
+          <div class="intensive-menu__container step3-menu__container">
+            <div class="intensive-menu__info">Ваш прогресс:</div>
+            <div class="intensive-container__caption intensive-test-container__caption step3-item__title-js">Название теста</div>
+            <div class="intensive-container__progress">
+              <div class="intensive-container__progress-caption step2-container__progress-caption">11%</div>
+              <div class="intensive-container__progress-bar_green step3-container__progress-bar_green"></div>
+              <div class="intensive-container__progress-bar_gray"></div>
+            </div>
+            <div class="intensive-container__item-wrap intensive-test-container__item-wrap">
+              <div class="intensive-container__item-img">
+                <img src="./images/intensive-menu-check-black.svg" alt="" />
+              </div>
+              <div class="intensive-container__item-text">
+                <span>Пройдено</span>
+              </div>
+              <div class="intensive-container__item-result intensive-test-container__item-result">
+                <span class="step2-container__item-result_num">1</span><span class="step2-container__item-result__gray">/9</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step3-start">
+          <h2 class="intensive_test-item__caption step3-item__caption">Нажимайте на любой кусочек пазла и отвечайте на вопросы</h2>
+          <h1 class="intensive_test-item__title step3-item__title step3-item__title-js">Title</h1>
+          <div class="intensive-test__container step3-container">
+            <div class="questions">
+              <div class="intensive-test__questions"></div>
+            </div>
+            <div class="puzzle">
+              <div class="intensive-test__puzzle">
+                <div class="intensive-puzzle_item opened">
+                  <div class="intensive-puzzle_item-first intensive-puzzle_item-first_active">
+                    <div class="intensive-puzzle_item-num">0</div>
+                  </div>
+                  <div class="intensive-puzzle_item-second">
+                    <img src="/images/1.jpg" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step2-end">
+          <div class="content">
+            <h2 class="step3-end__title">Поздравляем, вы справились!</h2>
+            <div class="step2-end__content">
+              <div class="step2-end__content-wrap">
+                <div class="step2-end__content-title">Получите приз!</div>
+                <div class="step2-end__content-text">Теперь вы можете скачать приз&nbsp;— анимированные стикеры для Telegram</div>
+                <a class="step2-end__content-link" href="https://t.me/addstickers/LovelyPeachy">
+                  <img class="step2-end__content-link-img" src="./images/step3-download.svg" alt="" />
+                  <span class="step2-end__content-link-text">Cкачать</span>
+                </a>
+              </div>
+              <img class="step2-end__content-bg-1" src="./images/step2-bg-1.png" alt="" />
+              <img class="step2-end__content-bg-2" src="./images/step2-bg-2.png" alt="" />
+            </div>
+            <div class="step3-end__buttons">
+              <div class="step3-end__button_restart button" onclick="location.reload();">Пройти ещё раз</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
