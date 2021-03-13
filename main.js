@@ -184,7 +184,7 @@ async function puzzleStart(response) {
         answer.querySelector(".intensive-test__input-check").innerHTML =
           '<img class="intensive-test__input-img intensive-test__input-check-error" src="./images/intensive-test-input-checked.svg" alt="">';
         comment.classList.add("question-container__comment");
-        comment.innerHTML = `<div class="question-container__comment-title">Comment correct</div></div><div class="question-container__comment-text">Вопрос уровня ${test[question_id].difficulty}</div>`;
+        comment.innerHTML = `<div class="question-container__comment-title">Верно!</div></div></div><div class="question-container__comment-text">Вопрос уровня ${test[question_id].difficulty}</div>`;
         answer.classList.add("intensive-test__input-container-correct");
         document.querySelectorAll(".intensive-test__input-container").forEach(function (item, index) {
           item.classList.remove("intensive-test__input-container-false");
