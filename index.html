@@ -16,13 +16,17 @@
     <meta name="description" content="Пазл" />
     <title>Пазл</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="container.css" />
+    <link rel="stylesheet" href="select.css" />
+    <link rel="stylesheet" href="atoms.css" />
     <script src="./main.js"></script>
   </head>
   <body>
     <div class="content-grid">
       <div class="content-wrap">
         <div class="buttons-wrap">
-          <div class="btn-caption intensive-container__caption">
+          <div class="btn-caption puzzle__caption">
             <span>Выбор категории</span>
             <img src="./images/icon-arrow-down.svg" alt="" />
           </div>
@@ -41,23 +45,23 @@
           </div>
         </div>
 
-        <div class="intensive-menu__info-wrap intensive-test-menu__info-wrap" tabindex="0" aria-hidden="true">
-          <div class="intensive-menu__container step3-menu__container">
-            <div class="intensive-menu__info">Ваш прогресс:</div>
-            <div class="intensive-container__caption intensive-test-container__caption step3-item__title-js">Название теста</div>
-            <div class="intensive-container__progress">
-              <div class="intensive-container__progress-caption step2-container__progress-caption">11%</div>
-              <div class="intensive-container__progress-bar_green step3-container__progress-bar_green"></div>
-              <div class="intensive-container__progress-bar_gray"></div>
+        <div class="puzzle__info-wrap intensive-test-menu__info-wrap" tabindex="0" aria-hidden="true">
+          <div class="puzzle__container step3-menu__container">
+            <div class="puzzle__info">Ваш прогресс:</div>
+            <div class="puzzle__caption puzzle__caption step3-item__title-js">Название теста</div>
+            <div class="puzzle__progress">
+              <div class="puzzle__progress-caption step2-container__progress-caption">11%</div>
+              <div class="puzzle__progress-bar_green step3-container__progress-bar_green"></div>
+              <div class="puzzle__progress-bar_gray"></div>
             </div>
-            <div class="intensive-container__item-wrap intensive-test-container__item-wrap">
-              <div class="intensive-container__item-img">
-                <img src="./images/intensive-menu-check-black.svg" alt="" />
+            <div class="puzzle__item-wrap puzzle__item-wrap">
+              <div class="puzzle__item-img">
+                <img src="./images/puzzle-check-black.svg" alt="" />
               </div>
-              <div class="intensive-container__item-text">
+              <div class="puzzle__item-text">
                 <span>Пройдено</span>
               </div>
-              <div class="intensive-container__item-result intensive-test-container__item-result">
+              <div class="puzzle__item-result puzzle__item-result">
                 <span class="step2-container__item-result_num">1</span><span class="step2-container__item-result__gray">/9</span>
               </div>
             </div>

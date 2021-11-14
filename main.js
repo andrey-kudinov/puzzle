@@ -1,13 +1,12 @@
 async function getTest(type = 27) {
-  // Default options are marked with *
   let url = `https://opentdb.com/api.php?amount=30&category=${type}&type=multiple`;
   const response = await fetch(url, {
-    method: "GET", // *GET, POST, PUT, DELETE, etc.
-    mode: "cors", // no-cors, *cors, same-origin
-    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "same-origin", // include, *same-origin, omit
-    redirect: "follow", // manual, *follow, error
-    referrerPolicy: "no-referrer", // no-referrer, *client
+    method: "GET",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
+    redirect: "follow",
+    referrerPolicy: "no-referrer",
   });
   return await response;
 }
@@ -78,8 +77,8 @@ async function puzzleStart(response) {
   shuffle(test);
   test = test.slice(0, 8);
 
-  let answerHTML = "";
-  let puzzleHTML = "";
+  let answerHTML;
+  let puzzleHTML;
 
   let $class = "d-block";
   let cardClass = "intensive-puzzle_item-first_active";
@@ -94,11 +93,6 @@ async function puzzleStart(response) {
       </div>
     </div>`;
 
-  // document.querySelectorAll(".intensive-puzzle_item").forEach(function (item, index) {
-  //   item.classList.remove("opened");
-  // });
-  // document.querySelectorAll(".intensive-puzzle_item")[0].classList.remove("opened");
-
   for (let i = 0; i < test.length; i++) {
     if (i !== 0) {
       $class = "d-none";
@@ -106,16 +100,12 @@ async function puzzleStart(response) {
     }
     let answersArray = [test[i].correct_answer, test[i].incorrect_answers[0], test[i].incorrect_answers[1]];
     shuffle(answersArray);
-    let answers = "";
+    let answers = '';
     let question = test[i];
     for (let j = 0; j < 3; j++) {
       let answer = answersArray[j];
       let check = "";
-      // let check = `<img class="intensive-test__input-check-error" src="../images/intensive-test-input-error.svg" alt="">`;
       if (answer.correct) {
-        // check = `<img class="intensive-test__input-img intensive-test__input-check-checked" src="../images/intensive-test-input-checked.svg" alt="">`;
-      } else {
-        // check = `<img class="intensive-test__input-img intensive-test__input-check-error" src="../images/intensive-test-input-error.svg" alt="">`;
       }
       answerHTML =
         '<label class="intensive-test__input-container question-container__answer-text" data-id="' +
@@ -130,20 +120,20 @@ async function puzzleStart(response) {
       answers += answerHTML;
     }
     let questionHTML = `<div class="intensive-test__question-container question-container ${$class}" data-id="${i}" data-id-backend=${i}>
-                                              <div class="question-container__head">
-                                                  <div class="question-container__title">
-                                                      Вопрос ${i + 1}
-                                                  </div>
-                                                  <div class="question-container__caption">
-                                                      ${question.question}
-                                                  </div>
-                                              </div>
-                                              <div class="question-container__body">
-                                                  <div class="answers">
-                                                      ${answers}
-                                                  </div>
-                                              </div>
-                                          </div>`;
+                          <div class="question-container__head">
+                              <div class="question-container__title">
+                                  Вопрос ${i + 1}
+                              </div>
+                              <div class="question-container__caption">
+                                  ${question.question}
+                              </div>
+                          </div>
+                          <div class="question-container__body">
+                              <div class="answers">
+                                  ${answers}
+                              </div>
+                          </div>
+                      </div>`;
     document.querySelector(".intensive-test__questions").innerHTML += questionHTML;
     puzzleHTML = `<div class="intensive-puzzle_item" data-id="${i}">
                                                       <div class="intensive-puzzle_item-first ${cardClass}">
