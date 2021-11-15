@@ -86,14 +86,6 @@ input[type='number'] {
   background-color: #629727;
 }
 
-.h_100vh {
-  min-height: 100vh;
-}
-
-.no-scroll {
-  overflow-y: hidden;
-}
-
 .button_gray {
   color: rgba(6, 27, 54, 1);
   background: #f8f8f8;
@@ -331,10 +323,6 @@ input[type='number'] {
   border: 1px solid #d1d2cd;
   border-radius: 15px;
 }
-
-/* .intensive-item__block:last-child {
-  margin-bottom: 0;
-} */
 
 .intensive-block__wrapper {
   padding: 32px;
@@ -794,7 +782,7 @@ input[type='number'] {
 .puzzle__progress-bar_green {
   position: relative;
   z-index: 3;
-  width: 75%;
+  width: 11%;
   height: 4px;
   margin-bottom: 16px;
   transition: 1s;
@@ -810,10 +798,6 @@ input[type='number'] {
   margin-bottom: 16px;
   border-radius: 15px;
   background: #77bb2f;
-}
-
-.step3-container__progress-bar_green {
-  width: 11%;
 }
 
 .step2-container__progress-bar_green {

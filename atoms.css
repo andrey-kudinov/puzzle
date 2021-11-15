@@ -5,3 +5,11 @@
 .d-none {
   display: none;
 }
+
+.h_100vh {
+  min-height: 100vh;
+}
+
+.no-scroll {
+  overflow-y: hidden;
+}

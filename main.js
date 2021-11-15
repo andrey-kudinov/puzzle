@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
       id = el.dataset.id;
       document.querySelector(".intensive-test__questions").innerHTML = "";
       document.querySelector(".step2-container__item-result_num").textContent = 1;
-      document.querySelector(".step2-container__progress-caption").textContent = `11%`;
-      document.querySelector(".step3-container__progress-bar_green").style.width = `11%`;
+      document.querySelector(".puzzle__progress-caption").textContent = `11%`;
+      document.querySelector(".puzzle__progress-bar_green").style.width = `11%`;
 
       if (document.querySelectorAll(".intensive-puzzle_item.opened").length > 1) {
         for (let i = 1; i < 9; i++) {
@@ -147,7 +147,7 @@ async function puzzleStart(response) {
   }
 
   let correctAnswersCounter = 1;
-  document.querySelectorAll(".step3-item__title-js").forEach(function (item, index) {
+  document.querySelectorAll(".puzzle__caption-js").forEach(function (item, index) {
     item.textContent = `${test[0].category}`;
   });
   document.querySelectorAll(".intensive-test__input-checkbox").forEach(function (item, index) {
@@ -169,8 +169,8 @@ async function puzzleStart(response) {
       if (answer.textContent == test[question_id].correct_answer) {
         correctAnswersCounter++;
         document.querySelector(".step2-container__item-result_num").textContent = correctAnswersCounter;
-        document.querySelector(".step2-container__progress-caption").textContent = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
-        document.querySelector(".step3-container__progress-bar_green").style.width = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
+        document.querySelector(".puzzle__progress-caption").textContent = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
+        document.querySelector(".puzzle__progress-bar_green").style.width = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
         answer.querySelector(".intensive-test__input-check").innerHTML =
           '<img class="intensive-test__input-img intensive-test__input-check-error" src="./images/intensive-test-input-checked.svg" alt="">';
         comment.classList.add("question-container__comment");
