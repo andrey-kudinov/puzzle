@@ -819,7 +819,7 @@ input[type='number'] {
   display: none;
 }
 
-.intensive_test-item__caption {
+.puzzle__subtitle {
   margin-top: 24px;
   margin-bottom: 8px;
   color: #78be20;
@@ -830,7 +830,7 @@ input[type='number'] {
   line-height: 22px;
 }
 
-.intensive_test-item__title {
+.puzzle__title {
   margin-bottom: 32px;
   color: #061b36;
   font-family: 'HelveticaNeue', sans-serif;
@@ -840,7 +840,7 @@ input[type='number'] {
   line-height: 42px;
 }
 
-.intensive_test-item__test {
+.puzzle__test {
   width: 100%;
   margin-bottom: 64px;
   color: #333;
@@ -869,7 +869,7 @@ input[type='number'] {
   border-radius: 6px;
 }
 
-.intensive_test-item__test-container {
+.puzzle__test-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -881,7 +881,7 @@ input[type='number'] {
   margin: 0 auto;
 }
 
-.intensive_test-item__test .question {
+.puzzle__test .question {
   margin-bottom: 38px;
   color: #061b36;
   font-family: 'HelveticaNeue', sans-serif;
@@ -896,7 +896,7 @@ input[type='number'] {
   background: #77bb2f;
 }
 
-/* .intensive_test-item__test .answers {
+/* .puzzle__test .answers {
   text-align: left;
   display: inline-block;
   font-family: "HelveticaNeue", sans-serif;
@@ -906,11 +906,11 @@ input[type='number'] {
   line-height: 22px;
   color: #515151;
 }
-.intensive_test-item__test .answers label {
+.puzzle__test .answers label {
   display: block;
   margin-bottom: 10px;
 } */
-.intensive_test-item__test .answers {
+.puzzle__test .answers {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -920,7 +920,7 @@ input[type='number'] {
   flex-direction: column;
 }
 
-.intensive_test-item__test .comment_1,
+.puzzle__test .comment_1,
 .comment_2 {
   position: absolute;
   bottom: -14px;
@@ -968,12 +968,12 @@ input[type='number'] {
   background: #061b36;
 }
 
-.intensive_test-item__test .btn {
+.puzzle__test .btn {
   width: 285px;
   height: 52px;
 }
 
-.intensive_test-item__test .slide {
+.puzzle__test .slide {
   z-index: 1;
   display: none;
   -ms-flex-negative: 0;
@@ -986,7 +986,7 @@ input[type='number'] {
   /* transition: opacity 0.5s; */
 }
 
-.intensive_test-item__test .active-slide {
+.puzzle__test .active-slide {
   z-index: 2;
   display: block;
   -ms-flex-negative: 0;
@@ -995,22 +995,22 @@ input[type='number'] {
   opacity: 1;
 }
 
-.intensive_test-item__test .quiz-container {
+.puzzle__test .quiz-container {
   position: relative;
 }
 
-.intensive_test-item__test #quiz {
+.puzzle__test #quiz {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.intensive_test-item__test .result {
+.puzzle__test .result {
   text-align: center;
   font-size: 50px;
 }
 
-.intensive_test-item__test .current {
+.puzzle__test .current {
   text-align: center;
   font-size: 50px;
 }
@@ -1278,7 +1278,7 @@ input[type='number'] {
   margin-top: 40px;
 }
 
-.intensive-test__container {
+.puzzle__questions-container-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   width: 100%;
@@ -1286,7 +1286,7 @@ input[type='number'] {
   gap: 20px;
 }
 
-.questions {
+.puzzle__questions-container {
   width: 100%;
 }
 
@@ -1441,7 +1441,7 @@ input[type='number'] {
   line-height: 17px;
 }
 
-.intensive-test__puzzle {
+.puzzle__items {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1456,7 +1456,7 @@ input[type='number'] {
   width: 500px;
 }
 
-.intensive-puzzle_item {
+.puzzle__item {
   position: relative;
   width: 118px;
   height: 118px;
@@ -1464,11 +1464,11 @@ input[type='number'] {
   border-radius: 3px;
 }
 
-.intensive-test__questions {
+.puzzle__questions {
   width: 100%;
 }
 
-.intensive-puzzle_item-num {
+.puzzle__item-num {
   padding-top: 13px;
   padding-left: 18px;
   -webkit-transition: .3s;
@@ -1494,15 +1494,15 @@ input[type='number'] {
   width: 100%;
 }
 
-.intensive-test__container .row {
+.puzzle__questions-container-wrapper .row {
   width: 100%;
 }
 
-.intensive-puzzle_item-first_active .intensive-puzzle_item-num {
+.active .puzzle__item-num {
   color: #77bb2f;
 }
 
-.intensive-puzzle_item-first {
+.puzzle__item-first {
   position: absolute;
   top: 0;
   left: 0;
@@ -1519,11 +1519,11 @@ input[type='number'] {
   backface-visibility: hidden;
 }
 
-.intensive-puzzle_item-first_active {
+.active {
   background: rgba(119, 187, 47, .2);
 }
 
-.intensive-puzzle_item-second {
+.puzzle__item-second {
   width: 100%;
   height: 100%;
   -webkit-transition: 1s;
@@ -1536,7 +1536,7 @@ input[type='number'] {
   backface-visibility: hidden;
 }
 
-.intensive-puzzle_item-second {
+.puzzle__item-second {
   width: 100%;
   height: 100%;
 
@@ -1546,7 +1546,7 @@ input[type='number'] {
   object-position: center;
 }
 
-.intensive-puzzle_item-second img {
+.puzzle__item-second img {
   display: block;
   width: 100%;
   height: 100%;
@@ -1557,12 +1557,12 @@ input[type='number'] {
   object-position: center;
 }
 
-.intensive-puzzle_item.opened .intensive-puzzle_item-second {
+.puzzle__item.opened .puzzle__item-second {
   -webkit-transform: rotateY(0);
   transform: rotateY(0);
 }
 
-.intensive-puzzle_item.opened .intensive-puzzle_item-first {
+.puzzle__item.opened .puzzle__item-first {
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
@@ -1937,11 +1937,11 @@ input[type='number'] {
     max-width: 70%;
   }
 
-  .intensive_test-item__test .active-slide {
+  .puzzle__test .active-slide {
     width: 60%;
   }
 
-  .intensive_test-item__test .slide {
+  .puzzle__test .slide {
     width: 60%;
   }
 }
@@ -2034,19 +2034,19 @@ input[type='number'] {
     width: 100%;
   }
 
-  .intensive_test-item__test .slide {
+  .puzzle__test .slide {
     width: 100%;
   }
 
-  .intensive_test-item__test .active-slide {
+  .puzzle__test .active-slide {
     width: 100%;
   }
 
-  .intensive-test__puzzle {
+  .puzzle__items {
     width: 100%;
   }
 
-  .intensive-puzzle_item {
+  .puzzle__item {
     width: 30%;
     height: auto;
   }
@@ -2406,17 +2406,17 @@ input[type='number'] {
     padding-left: 0;
   }
 
-  .intensive_test-item__caption {
+  .puzzle__subtitle {
     font-size: 17px;
     line-height: 21px;
   }
 
-  .intensive_test-item__title {
+  .puzzle__title {
     font-size: 20px;
     line-height: 28px;
   }
 
-  .intensive_test-item__test .question {
+  .puzzle__test .question {
     margin-bottom: 32px;
     font-size: 15px;
     line-height: 18px;
@@ -2436,7 +2436,7 @@ input[type='number'] {
     height: 38px;
   }
 
-  .intensive_test-item__test .quiz-container {
+  .puzzle__test .quiz-container {
     height: 40 0;
   }
 
@@ -2455,17 +2455,17 @@ input[type='number'] {
     width: 100%;
   }
 
-  .intensive_test-item__title {
+  .puzzle__title {
     margin-bottom: 32px;
     padding: 0 30px;
   }
 
-  .intensive_test-item__caption {
+  .puzzle__subtitle {
     margin-top: 40px;
-    padding: 0 30px;
+    padding: 0;
   }
 
-  .intensive_test-item__test-container {
+  .puzzle__test-container {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2495,7 +2495,7 @@ input[type='number'] {
     height: 38px;
   }
 
-  .intensive_test-item__test .btn {
+  .puzzle__test .btn {
     width: 100%;
     height: 38px;
     margin-bottom: 16px;
@@ -2567,7 +2567,7 @@ input[type='number'] {
     line-height: 20px;
   }
 
-  .intensive_test-item__test {
+  .puzzle__test {
     margin-bottom: 40px;
   }
 
@@ -2576,11 +2576,11 @@ input[type='number'] {
     border-top: 1px solid #d1d2cd;
   }
 
-  .intensive_test-item__test #previous {
+  .puzzle__test #previous {
     margin-bottom: 0;
   }
 
-  .intensive_test-item__test .comment_1,
+  .puzzle__test .comment_1,
   .comment_2 {
     position: absolute;
     bottom: -18px;
@@ -2606,10 +2606,6 @@ input[type='number'] {
     line-height: 21px;
   }
 
-  .step3-item__caption {
-    padding: 0;
-  }
-
   .step3-item__title {
     padding: 0;
   }
@@ -2623,11 +2619,11 @@ input[type='number'] {
     margin-left: 32px;
   }
 
-  .intensive-test__puzzle {
+  .puzzle__items {
     width: 100%;
   }
 
-  .intensive-puzzle_item {
+  .puzzle__item {
     width: 30%;
     height: auto;
   }

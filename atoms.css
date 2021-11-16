@@ -13,3 +13,7 @@
 .no-scroll {
   overflow-y: hidden;
 }
+
+.full-width {
+  width: 100%;
+}

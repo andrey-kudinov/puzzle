@@ -20,14 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".btn-choose ").forEach((el) => {
     el.onclick = function () {
       id = el.dataset.id;
-      document.querySelector(".intensive-test__questions").innerHTML = "";
+      document.querySelector(".puzzle__questions").innerHTML = "";
       document.querySelector(".step2-container__item-result_num").textContent = 1;
       document.querySelector(".puzzle__progress-caption").textContent = `11%`;
       document.querySelector(".puzzle__progress-bar_green").style.width = `11%`;
 
-      if (document.querySelectorAll(".intensive-puzzle_item.opened").length > 1) {
+      if (document.querySelectorAll(".puzzle__item.opened").length > 1) {
         for (let i = 1; i < 9; i++) {
-          document.querySelectorAll(".intensive-puzzle_item")[i].classList.remove("opened");
+          document.querySelectorAll(".puzzle__item")[i].classList.remove("opened");
         }
 
         setTimeout(() => {
@@ -81,14 +81,14 @@ async function puzzleStart(response) {
   let puzzleHTML;
 
   let $class = "d-block";
-  let cardClass = "intensive-puzzle_item-first_active";
+  let cardClass = "active";
 
-  document.querySelector(".intensive-test__puzzle").innerHTML = `
-    <div class="intensive-puzzle_item opened">
-      <div class="intensive-puzzle_item-first intensive-puzzle_item-first_active">
-        <div class="intensive-puzzle_item-num">1</div>
+  document.querySelector(".puzzle__items").innerHTML = `
+    <div class="puzzle__item opened">
+      <div class="puzzle__item-first active">
+        <div class="puzzle__item-num">1</div>
       </div>
-      <div class="intensive-puzzle_item-second">
+      <div class="puzzle__item-second">
         <img src="./images/1.jpg" alt="" />
       </div>
     </div>`;
@@ -134,16 +134,16 @@ async function puzzleStart(response) {
                               </div>
                           </div>
                       </div>`;
-    document.querySelector(".intensive-test__questions").innerHTML += questionHTML;
-    puzzleHTML = `<div class="intensive-puzzle_item" data-id="${i}">
-                                                      <div class="intensive-puzzle_item-first ${cardClass}">
-                                                          <div class="intensive-puzzle_item-num">${i + 1}</div>
+    document.querySelector(".puzzle__questions").innerHTML += questionHTML;
+    puzzleHTML = `<div class="puzzle__item" data-id="${i}">
+                                                      <div class="puzzle__item-first ${cardClass}">
+                                                          <div class="puzzle__item-num">${i + 1}</div>
                                                       </div>
-                                                      <div class="intensive-puzzle_item-second">
+                                                      <div class="puzzle__item-second">
                                                           <img src="./images/${i + 2}.jpg" alt="">
                                                       </div>
                                                   </div>`;
-    document.querySelector(".intensive-test__puzzle").innerHTML += puzzleHTML;
+    document.querySelector(".puzzle__items").innerHTML += puzzleHTML;
   }
 
   let correctAnswersCounter = 1;
@@ -182,11 +182,11 @@ async function puzzleStart(response) {
         question.querySelectorAll(".intensive-test__input-container").forEach(function (item, index) {
           item.classList.add("intensive-test__input-container_disable");
         });
-        document.querySelector(".intensive-puzzle_item[data-id='" + question_id + "']").classList.add("opened");
+        document.querySelector(".puzzle__item[data-id='" + question_id + "']").classList.add("opened");
         if (correctAnswersCounter == 9) {
           document.querySelector(".step2-container__item-result__gray").style.color = "#061b36";
         }
-        if (document.querySelectorAll(".intensive-puzzle_item.opened").length == 9) {
+        if (document.querySelectorAll(".puzzle__item.opened").length == 9) {
           setTimeout(function () {
             document.querySelector(".buttons-wrap").style.display = "none";
             document.querySelector(".step3-start").style.display = "none";
@@ -210,7 +210,7 @@ async function puzzleStart(response) {
 
 document.addEventListener("click", async function (e) {
   for (let target = e.target; target && target != this; target = target.parentNode) {
-    if (target.matches(".intensive-puzzle_item:not(.opened)")) {
+    if (target.matches(".puzzle__item:not(.opened)")) {
       const $this = target;
       const id = $this.getAttribute("data-id");
       document.querySelectorAll(".question-container").forEach(function (item, index) {
@@ -219,10 +219,10 @@ document.addEventListener("click", async function (e) {
       });
       document.querySelector(".question-container[data-id='" + id + "']").classList.remove("d-none");
       document.querySelector(".question-container[data-id='" + id + "']").classList.add("d-block");
-      document.querySelectorAll(".intensive-puzzle_item-first").forEach(function (item, index) {
-        item.classList.remove("intensive-puzzle_item-first_active");
+      document.querySelectorAll(".puzzle__item-first").forEach(function (item, index) {
+        item.classList.remove("active");
       });
-      $this.querySelector(".intensive-puzzle_item-first").classList.add("intensive-puzzle_item-first_active");
+      $this.querySelector(".puzzle__item-first").classList.add("active");
     }
   }
 });
