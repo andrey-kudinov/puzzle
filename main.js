@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.onclick = function () {
       id = el.dataset.id;
       document.querySelector(".puzzle__questions").innerHTML = "";
-      document.querySelector(".step2-container__item-result_num").textContent = 1;
+      document.querySelector(".puzzle__result-num").textContent = 1;
       document.querySelector(".puzzle__progress-caption").textContent = `11%`;
       document.querySelector(".puzzle__progress-bar_green").style.width = `11%`;
 
@@ -168,7 +168,7 @@ async function puzzleStart(response) {
       });
       if (answer.textContent == test[question_id].correct_answer) {
         correctAnswersCounter++;
-        document.querySelector(".step2-container__item-result_num").textContent = correctAnswersCounter;
+        document.querySelector(".puzzle__result-num").textContent = correctAnswersCounter;
         document.querySelector(".puzzle__progress-caption").textContent = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
         document.querySelector(".puzzle__progress-bar_green").style.width = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
         answer.querySelector(".intensive-test__input-check").innerHTML =
@@ -184,13 +184,13 @@ async function puzzleStart(response) {
         });
         document.querySelector(".puzzle__item[data-id='" + question_id + "']").classList.add("opened");
         if (correctAnswersCounter == 9) {
-          document.querySelector(".step2-container__item-result__gray").style.color = "#061b36";
+          document.querySelector(".puzzle__result-all").style.color = "#061b36";
         }
         if (document.querySelectorAll(".puzzle__item.opened").length == 9) {
           setTimeout(function () {
             document.querySelector(".buttons-wrap").style.display = "none";
             document.querySelector(".step3-start").style.display = "none";
-            document.querySelector(".step2-end").style.display = "block";
+            document.querySelector(".puzzle__message").style.display = "block";
           }, 1000);
         }
       } else {

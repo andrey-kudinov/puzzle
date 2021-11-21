@@ -1,39 +1,8 @@
-.answers {
-  width: 100%;
-}
-
-@media screen and (max-width: 768px) {
-  .answers {
-    width: 100%;
-  }
-}
 
 @media screen and (min-width: 1200px) {
-  .step3-end .content {
+  .puzzle__message .content {
     width: 100%;
   }
-
-  .step2-end .content {
-    width: 100%;
-  }
-}
-
-.header {
-  position: relative;
-  z-index: 10;
-  padding-top: 30px;
-}
-
-input.auth-form__input::-webkit-outer-spin-button,
-input.auth-form__input::-webkit-inner-spin-button {
-  margin: 0;
-
-  -webkit-appearance: none;
-}
-
-/* Firefox */
-input[type='number'] {
-  -moz-appearance: textfield;
 }
 
 .button {
@@ -61,15 +30,9 @@ input[type='number'] {
   line-height: 20px;
 }
 
-.button_green,
-.step2__button_green {
+.button_green {
   color: #fff;
   background-color: #77bb2f;
-}
-
-.step2__button_green {
-  width: 216px;
-  height: 52px;
 }
 
 .button_dark-blue {
@@ -81,8 +44,7 @@ input[type='number'] {
   background-color: #42556c;
 }
 
-.button_green:hover,
-.step2__button_green:hover {
+.button_green:hover {
   background-color: #629727;
 }
 
@@ -800,10 +762,6 @@ input[type='number'] {
   background: #77bb2f;
 }
 
-.step2-container__progress-bar_green {
-  width: 0;
-}
-
 .puzzle__progress-bar_gray {
   position: absolute;
   z-index: 1;
@@ -815,7 +773,7 @@ input[type='number'] {
 }
 
 .puzzle__info-wrapper_mobile,
-.intensive-test-menu__info-wrapper_mobile {
+.puzzle__info-wrapper_mobile {
   display: none;
 }
 
@@ -896,20 +854,6 @@ input[type='number'] {
   background: #77bb2f;
 }
 
-/* .puzzle__test .answers {
-  text-align: left;
-  display: inline-block;
-  font-family: "HelveticaNeue", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 22px;
-  color: #515151;
-}
-.puzzle__test .answers label {
-  display: block;
-  margin-bottom: 10px;
-} */
 .puzzle__test .answers {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -935,39 +879,6 @@ input[type='number'] {
   line-height: 20px;
 }
 
-.button_test-back,
-.step2__button_test-back {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 185px;
-  height: 41px;
-  margin-right: 30px;
-  -webkit-transition: .3s;
-  -o-transition: .3s;
-  transition: .3s;
-  color: #fff;
-  border-radius: 5px;
-  background: #061b36;
-}
-
-.step2__button_test-back {
-  width: 255px;
-  height: 52px;
-}
-
-.button_test-back:hover {
-  background: #42556c;
-}
-
-.step2__button_test-back:hover {
-  background: #42556c;
-}
-
-.button_test-back:active,
-.step2__button_test-back:active {
-  background: #061b36;
-}
-
 .puzzle__test .btn {
   width: 285px;
   height: 52px;
@@ -978,12 +889,8 @@ input[type='number'] {
   display: none;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  /* position: absolute;
-  left: 0px;
-  top: 0px; */
   width: 100%;
   opacity: 0;
-  /* transition: opacity 0.5s; */
 }
 
 .puzzle__test .active-slide {
@@ -1107,7 +1014,7 @@ input[type='number'] {
   color: #d1d2cd;
 }
 
-.step2-container__item-result__gray {
+.puzzle__result-all {
   color: #d1d2cd;
 }
 
@@ -1575,19 +1482,8 @@ input[type='number'] {
   display: none;
 }
 
-.step2-end {
+.puzzle__message {
   display: none;
-}
-
-.step3-end__title {
-  margin-top: 44px;
-  margin-bottom: 8px;
-  color: #061b36;
-  font-family: 'HelveticaNeue', sans-serif;
-  font-size: 32px;
-  font-weight: bold;
-  font-style: normal;
-  line-height: 42px;
 }
 
 .step3-end__desc {
@@ -1653,7 +1549,7 @@ input[type='number'] {
   background: #629727;
 }
 
-.step3-end__button_restart {
+.puzzle__message-button-restart {
   top: 0;
   left: 0;
   width: 255px;
@@ -1669,15 +1565,15 @@ input[type='number'] {
   line-height: 20px;
 }
 
-.step3-end__button_restart:active {
+.puzzle__message-button-restart:active {
   background: #061b36;
 }
 
-.step3-end__button_restart:hover {
+.puzzle__message-button-restart:hover {
   background: #42556c;
 }
 
-.step3-end__buttons {
+.puzzle__message-buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1695,7 +1591,7 @@ input[type='number'] {
   border: 3px solid #77bb2f;
 }
 
-.step2-end__content {
+.puzzle__content {
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -1713,13 +1609,13 @@ input[type='number'] {
   width: 320px;
 }
 
-.step2-end__content-wrap {
+.puzzle__message-wrap {
   width: 70%;
   padding: 42px 30px;
   padding-right: 0;
 }
 
-.step2-end__content-title {
+.puzzle__message-title {
   width: 300px;
   font-family: 'HelveticaNeue', sans-serif;
   font-size: 24px;
@@ -1728,7 +1624,7 @@ input[type='number'] {
   line-height: 32px;
 }
 
-.step2-end__content-text {
+.puzzle__message-text {
   margin-bottom: 115px;
   font-family: 'HelveticaNeue', sans-serif;
   font-size: 16px;
@@ -1747,7 +1643,7 @@ input[type='number'] {
   line-height: 29px;
 }
 
-.step2-end__content-link-text {
+.puzzle__message-link-text {
   color: #77bb2f;
   font-family: 'HelveticaNeue', sans-serif;
   font-size: 16px;
@@ -1756,7 +1652,7 @@ input[type='number'] {
   line-height: 20px;
 }
 
-.step2-end__content-link {
+.puzzle__message-link {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1765,12 +1661,12 @@ input[type='number'] {
   -ms-flex-align: center;
 }
 
-.step2-end__content-link-text {
+.puzzle__message-link-text {
   z-index: 1;
   margin-left: 16px;
 }
 
-.step2-end__content-bg-1 {
+.puzzle__message-bg1 {
   position: absolute;
   top: 0;
   right: 16px;
@@ -1782,13 +1678,13 @@ input[type='number'] {
   bottom: 40px;
 }
 
-.step2-end__content-bg-2 {
+.puzzle__message-bg2 {
   position: absolute;
   right: 30px;
   bottom: 0;
 }
 
-.step2-end__content-block {
+.puzzle__content-block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1797,7 +1693,7 @@ input[type='number'] {
   justify-content: space-between;
 }
 
-.step3-end__content_1 .step2-end__content-title {
+.step3-end__content_1 .puzzle__message-title {
   color: #77bb2f;
   font-family: 'HelveticaNeue', sans-serif;
   font-size: 14px;
@@ -1806,7 +1702,7 @@ input[type='number'] {
   line-height: 17px;
 }
 
-.step3-end__content_2 .step2-end__content-title {
+.step3-end__content_2 .puzzle__message-title {
   color: #77bb2f;
   font-family: 'HelveticaNeue', sans-serif;
   font-size: 14px;
@@ -1815,11 +1711,11 @@ input[type='number'] {
   line-height: 17px;
 }
 
-.step3-end__content_1 .step2-end__content-wrap {
+.step3-end__content_1 .puzzle__message-wrap {
   width: 100%;
 }
 
-.step3-end__content_2 .step2-end__content-wrap {
+.step3-end__content_2 .puzzle__message-wrap {
   width: 100%;
 }
 
@@ -1961,7 +1857,7 @@ input[type='number'] {
   }
 
   .puzzle__info-wrapper_mobile,
-  .intensive-test-menu__info-wrapper_mobile {
+  .puzzle__info-wrapper_mobile {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2030,7 +1926,7 @@ input[type='number'] {
     padding: 24px 32px;
   }
 
-  .intensive-test-menu__info-wrap {
+  .puzzle__info-wrap {
     width: 100%;
   }
 
@@ -2297,7 +2193,7 @@ input[type='number'] {
   }
 
   .puzzle__info-wrapper_mobile,
-  .intensive-test-menu__info-wrapper_mobile {
+  .puzzle__info-wrapper_mobile {
     display: block;
     width: 100%;
     /* display: flex;
@@ -2361,7 +2257,7 @@ input[type='number'] {
     padding-right: 0;
   }
 
-  .intensive-test-menu__info-wrapper_mobile ul {
+  .puzzle__info-wrapper_mobile ul {
     padding-right: 0;
   }
 
@@ -2457,7 +2353,7 @@ input[type='number'] {
 
   .puzzle__title {
     margin-bottom: 32px;
-    padding: 0 30px;
+    padding: 0;
   }
 
   .puzzle__subtitle {
@@ -2685,7 +2581,7 @@ input[type='number'] {
     flex-direction: column;
   }
 
-  .step3-end__buttons {
+  .puzzle__message-buttons {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -2708,18 +2604,13 @@ input[type='number'] {
     margin-bottom: 16px;
   }
 
-  .step3-end__title {
-    font-size: 24px;
-    line-height: 29px;
-  }
-
   .step3-end__desc {
     font-size: 14px;
     line-height: 20px;
   }
 
   .step3-end__button_end,
-  .step3-end__button_restart {
+  .puzzle__message-button-restart {
     height: 38px;
     font-size: 16px;
     line-height: 20px;
@@ -2799,31 +2690,31 @@ input[type='number'] {
     line-height: 18px;
   }
 
-  .step2-end__content {
+  .puzzle__content {
     overflow: hidden;
     height: 300px;
     margin-bottom: 32px;
   }
 
-  .step2-end__content-wrap {
+  .puzzle__message-wrap {
     width: 100%;
     padding: 24px;
   }
 
-  .step2-end__content-title {
+  .puzzle__message-title {
     width: auto;
     font-size: 20px;
     line-height: 24px;
   }
 
-  .step2-end__content-text {
+  .puzzle__message-text {
     margin-bottom: 24px;
     font-size: 14px;
     font-style: normal;
     line-height: 20px;
   }
 
-  .step2-end__content-link-text {
+  .puzzle__message-link-text {
     margin-left: 16px;
     color: #77bb2f;
     font-size: 16px;
@@ -2831,7 +2722,7 @@ input[type='number'] {
     line-height: 20px;
   }
 
-  .step2-end__content-link {
+  .puzzle__message-link {
     position: relative;
     z-index: 5;
     display: -webkit-box;
@@ -2842,14 +2733,14 @@ input[type='number'] {
     -ms-flex-align: center;
   }
 
-  .step2-end__content-bg-1 {
+  .puzzle__message-bg1 {
     position: absolute;
     top: 0;
     right: 16px;
     display: none;
   }
 
-  .step2-end__content-bg-2 {
+  .puzzle__message-bg2 {
     position: absolute;
     z-index: 0;
     right: -40px;
@@ -2860,7 +2751,7 @@ input[type='number'] {
     margin-left: 36px;
   }
 
-  .step2-end__content-block {
+  .puzzle__content-block {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
