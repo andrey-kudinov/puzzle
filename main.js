@@ -108,27 +108,27 @@ async function puzzleStart(response) {
       if (answer.correct) {
       }
       answerHTML =
-        '<label class="intensive-test__input-container question-container__answer-text" data-id="' +
+        '<label class="puzzle__input-container puzzle__answer-text" data-id="' +
         answer.id +
-        '"><div class="intensive-test__input-wrapper intensive-test__input-wrapper"><input type="radio" name="question' +
+        '"><div class="puzzle__input-wrapper"><input type="radio" name="question' +
         i +
-        '" class="input intensive-test__input-checkbox"><div class="answers intensive-test__input-check">' +
+        '" class="input puzzle__input"><div class="answers puzzle__input-check">' +
         check +
-        '</div></div><span class="intensive-test__input-text answerText question-container__answer ">' +
+        '</div></div><span class="puzzle__input-text answerText puzzle__answer ">' +
         answer +
         "</span></label>";
       answers += answerHTML;
     }
-    let questionHTML = `<div class="intensive-test__question-container question-container ${$class}" data-id="${i}" data-id-backend=${i}>
-                          <div class="question-container__head">
-                              <div class="question-container__title">
+    let questionHTML = `<div class="puzzle__question-container ${$class}" data-id="${i}" data-id-backend=${i}>
+                          <div>
+                              <div class="puzzle__question-title">
                                   Вопрос ${i + 1}
                               </div>
-                              <div class="question-container__caption">
+                              <div class="puzzle__question-caption">
                                   ${question.question}
                               </div>
                           </div>
-                          <div class="question-container__body">
+                          <div>
                               <div class="answers">
                                   ${answers}
                               </div>
@@ -150,20 +150,20 @@ async function puzzleStart(response) {
   document.querySelectorAll(".puzzle__caption-js").forEach(function (item, index) {
     item.textContent = `${test[0].category}`;
   });
-  document.querySelectorAll(".intensive-test__input-checkbox").forEach(function (item, index) {
+  document.querySelectorAll(".puzzle__input").forEach(function (item, index) {
     item.addEventListener("change", async function (e) {
       let $this = this;
-      let question = $this.closest(".question-container");
-      let answer = $this.closest(".intensive-test__input-container");
+      let question = $this.closest(".puzzle__question-container");
+      let answer = $this.closest(".puzzle__input-container");
       let answer_id = answer.getAttribute("data-id");
-      let question_id = $this.closest(".question-container").getAttribute("data-id");
-      let question_id_backend = $this.closest(".question-container").getAttribute("data-id-backend");
+      let question_id = $this.closest(".puzzle__question-container").getAttribute("data-id");
+      let question_id_backend = $this.closest(".puzzle__question-container").getAttribute("data-id-backend");
 
       let comment = document.createElement("div");
-      question.querySelectorAll(".question-container__comment").forEach(function (item, index) {
+      question.querySelectorAll(".puzzle__comment").forEach(function (item, index) {
         item.remove();
       });
-      question.querySelectorAll(".question-container__comment_error").forEach(function (item, index) {
+      question.querySelectorAll(".puzzle__comment-false").forEach(function (item, index) {
         item.remove();
       });
       if (answer.textContent == test[question_id].correct_answer) {
@@ -171,16 +171,16 @@ async function puzzleStart(response) {
         document.querySelector(".puzzle__result-num").textContent = correctAnswersCounter;
         document.querySelector(".puzzle__progress-caption").textContent = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
         document.querySelector(".puzzle__progress-bar_green").style.width = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
-        answer.querySelector(".intensive-test__input-check").innerHTML =
-          '<img class="intensive-test__input-img intensive-test__input-check-error" src="./images/intensive-test-input-checked.svg" alt="">';
-        comment.classList.add("question-container__comment");
-        comment.innerHTML = `<div class="question-container__comment-title">Верно!</div></div></div><div class="question-container__comment-text">Вопрос уровня ${test[question_id].difficulty}</div>`;
-        answer.classList.add("intensive-test__input-container-correct");
-        document.querySelectorAll(".intensive-test__input-container").forEach(function (item, index) {
-          item.classList.remove("intensive-test__input-container-false");
+        answer.querySelector(".puzzle__input-check").innerHTML =
+          '<img class="puzzle__input-img puzzle__input-check-error" src="./images/intensive-test-input-checked.svg" alt="">';
+        comment.classList.add("puzzle__comment");
+        comment.innerHTML = `<div class="puzzle__comment-title">Верно!</div></div></div><div class="puzzle__comment-text">Вопрос уровня ${test[question_id].difficulty}</div>`;
+        answer.classList.add("puzzle__input-container-correct");
+        document.querySelectorAll(".puzzle__input-container").forEach(function (item, index) {
+          item.classList.remove("puzzle__input-container-false");
         });
-        question.querySelectorAll(".intensive-test__input-container").forEach(function (item, index) {
-          item.classList.add("intensive-test__input-container_disable");
+        question.querySelectorAll(".puzzle__input-container").forEach(function (item, index) {
+          item.classList.add("puzzle__input-container_disable");
         });
         document.querySelector(".puzzle__item[data-id='" + question_id + "']").classList.add("opened");
         if (correctAnswersCounter == 9) {
@@ -189,19 +189,19 @@ async function puzzleStart(response) {
         if (document.querySelectorAll(".puzzle__item.opened").length == 9) {
           setTimeout(function () {
             document.querySelector(".buttons-wrap").style.display = "none";
-            document.querySelector(".step3-start").style.display = "none";
+            document.querySelector(".puzzle__handle").style.display = "none";
             document.querySelector(".puzzle__message").style.display = "block";
           }, 1000);
         }
       } else {
-        answer.querySelector(".intensive-test__input-check").innerHTML =
-          '<img class="intensive-test__input-img intensive-test__input-check-error" src="./images/intensive-test-input-error.svg" alt="">';
+        answer.querySelector(".puzzle__input-check").innerHTML =
+          '<img class="puzzle__input-img puzzle__input-check-error" src="./images/intensive-test-input-error.svg" alt="">';
         comment.innerText = `Попробуй еще раз!`;
-        comment.classList.add("question-container__comment_error");
-        document.querySelectorAll(".intensive-test__input-container").forEach(function (item, index) {
-          item.classList.remove("intensive-test__input-container-false");
+        comment.classList.add("puzzle__comment-false");
+        document.querySelectorAll(".puzzle__input-container").forEach(function (item, index) {
+          item.classList.remove("puzzle__input-container-false");
         });
-        answer.classList.add("intensive-test__input-container-false");
+        answer.classList.add("puzzle__input-container-false");
       }
       answer.after(comment);
     });
@@ -213,12 +213,12 @@ document.addEventListener("click", async function (e) {
     if (target.matches(".puzzle__item:not(.opened)")) {
       const $this = target;
       const id = $this.getAttribute("data-id");
-      document.querySelectorAll(".question-container").forEach(function (item, index) {
+      document.querySelectorAll(".puzzle__question-container").forEach(function (item, index) {
         item.classList.remove("d-block");
         item.classList.add("d-none");
       });
-      document.querySelector(".question-container[data-id='" + id + "']").classList.remove("d-none");
-      document.querySelector(".question-container[data-id='" + id + "']").classList.add("d-block");
+      document.querySelector(".puzzle__question-container[data-id='" + id + "']").classList.remove("d-none");
+      document.querySelector(".puzzle__question-container[data-id='" + id + "']").classList.add("d-block");
       document.querySelectorAll(".puzzle__item-first").forEach(function (item, index) {
         item.classList.remove("active");
       });

@@ -89,7 +89,7 @@ a {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  -webkit-box-sizing: border-box;
+  
   box-sizing: border-box;
   color: inherit;
   text-decoration: none;
