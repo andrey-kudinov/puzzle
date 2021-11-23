@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector(".puzzle__questions").innerHTML = "";
       document.querySelector(".puzzle__result-num").textContent = 1;
       document.querySelector(".puzzle__progress-caption").textContent = `11%`;
-      document.querySelector(".puzzle__progress-bar_green").style.width = `11%`;
+      document.querySelector(".puzzle__progress-bar-green").style.width = `11%`;
 
       if (document.querySelectorAll(".puzzle__item.opened").length > 1) {
         for (let i = 1; i < 9; i++) {
@@ -63,11 +63,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   document.querySelector(".btn-caption").onclick = function () {
-    document.querySelector(".buttons-wrap").classList.toggle("buttons-wrap_active");
+    document.querySelector(".puzzle__buttons").classList.toggle("buttons-wrap_active");
   };
   document.addEventListener("mouseup", function (e) {
-    if (!document.querySelector(".buttons-wrap").contains(e.target)) {
-      document.querySelector(".buttons-wrap").classList.remove("buttons-wrap_active");
+    if (!document.querySelector(".puzzle__buttons").contains(e.target)) {
+      document.querySelector(".puzzle__buttons").classList.remove("buttons-wrap_active");
     }
   });
 });
@@ -170,9 +170,9 @@ async function puzzleStart(response) {
         correctAnswersCounter++;
         document.querySelector(".puzzle__result-num").textContent = correctAnswersCounter;
         document.querySelector(".puzzle__progress-caption").textContent = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
-        document.querySelector(".puzzle__progress-bar_green").style.width = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
+        document.querySelector(".puzzle__progress-bar-green").style.width = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
         answer.querySelector(".puzzle__input-check").innerHTML =
-          '<img class="puzzle__input-img puzzle__input-check-error" src="./images/intensive-test-input-checked.svg" alt="">';
+          '<img class="puzzle__input-img puzzle__input-check-error" src="./images/input-checked.svg" alt="">';
         comment.classList.add("puzzle__comment");
         comment.innerHTML = `<div class="puzzle__comment-title">Верно!</div></div></div><div class="puzzle__comment-text">Вопрос уровня ${test[question_id].difficulty}</div>`;
         answer.classList.add("puzzle__input-container-correct");
@@ -195,7 +195,7 @@ async function puzzleStart(response) {
         }
       } else {
         answer.querySelector(".puzzle__input-check").innerHTML =
-          '<img class="puzzle__input-img puzzle__input-check-error" src="./images/intensive-test-input-error.svg" alt="">';
+          '<img class="puzzle__input-img puzzle__input-check-error" src="./images/input-error.svg" alt="">';
         comment.innerText = `Попробуй еще раз!`;
         comment.classList.add("puzzle__comment-false");
         document.querySelectorAll(".puzzle__input-container").forEach(function (item, index) {
