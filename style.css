@@ -5,6 +5,12 @@ body {
     [main-start] minmax(0, 50em)
     [main-end] minmax(1em, 1fr)
     [full-end];
+  color: #515151;
+  font-family: 'HelveticaNeue', sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.25rem;
 }
 
 .puzzle {
@@ -36,10 +42,6 @@ body {
     width: 1170px;
     padding: 0;
   }
-}
-
-.puzzle__buttons {
-  overflow: hidden;
 }
 
 .puzzle__info {

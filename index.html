@@ -20,13 +20,15 @@
     <link rel="stylesheet" href="select.css" />
     <link rel="stylesheet" href="atoms.css" />
     <script src="./main.js"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
   </head>
   <body>
     <div class="puzzle">
-      <div class="puzzle__buttons">
-        <div class="btn-caption puzzle__caption">
-          <span>Выбор категории</span>
-          <img src="./images/icon-arrow-down.svg" alt="" />
+      <div class="puzzle__buttons overflow-hidden">
+        <div class="btn-caption">
+          <span class="text-lg font-bold">Выбор категории</span>
+          <img src="./images/icon-arrow-down.svg" alt="" class="inline"/>
         </div>
         <div class="btn-group">
           <button class="btn-choose btn" data-id="27">ANIMALS</button>
