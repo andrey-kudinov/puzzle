@@ -8,12 +8,7 @@
 }
 
 .btn-group {
-  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(138px, 1fr));
-  max-height: 0;
-  transition: .5s ease-in-out;
-
-  gap: 10px;
 }
 
 .buttons-wrap_active .btn-caption img {
