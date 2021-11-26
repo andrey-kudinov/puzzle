@@ -23,8 +23,9 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
   </head>
-  <body>
+  <body class="grid text-base leading-5 gray-800 py-4 md:py-12">
     <div class="puzzle">
+      <h1 class="invisible absolute">Puzzle</h1>
       <div class="puzzle__buttons overflow-hidden">
         <div class="btn-caption">
           <span class="text-lg font-bold">Выбор категории</span>
@@ -45,10 +46,10 @@
         </div>
       </div>
 
-      <div class="puzzle__info-wrap">
+      <div class="flex flex-col w-full ">
         <div class="puzzle__container">
           <div class="puzzle__info">Ваш прогресс:</div>
-          <div class="puzzle__caption puzzle__caption puzzle__caption-js">Название теста</div>
+          <div class="puzzle__caption puzzle__caption-js">Название теста</div>
           <div class="puzzle__progress">
             <div class="puzzle__progress-caption">11%</div>
             <div class="puzzle__progress-bar-green"></div>
