@@ -80,10 +80,10 @@ async function puzzleStart(response) {
   let answerHTML;
   let puzzleHTML;
 
-  let $class = "d-block";
+  let $class = "block";
   let cardClass = "active";
 
-  document.querySelector(".puzzle__items").innerHTML = `
+  document.querySelector(".puzzle__items-js").innerHTML = `
     <div class="puzzle__item opened">
       <div class="puzzle__item-first active">
         <div class="puzzle__item-num">1</div>
@@ -95,7 +95,7 @@ async function puzzleStart(response) {
 
   for (let i = 0; i < test.length; i++) {
     if (i !== 0) {
-      $class = "d-none";
+      $class = "hidden";
       cardClass = "";
     }
     let answersArray = [test[i].correct_answer, test[i].incorrect_answers[0], test[i].incorrect_answers[1]];
@@ -143,7 +143,7 @@ async function puzzleStart(response) {
                                                           <img src="./images/${i + 2}.jpg" alt="">
                                                       </div>
                                                   </div>`;
-    document.querySelector(".puzzle__items").innerHTML += puzzleHTML;
+    document.querySelector(".puzzle__items-js").innerHTML += puzzleHTML;
   }
 
   let correctAnswersCounter = 1;
@@ -214,11 +214,11 @@ document.addEventListener("click", async function (e) {
       const $this = target;
       const id = $this.getAttribute("data-id");
       document.querySelectorAll(".puzzle__question-container").forEach(function (item, index) {
-        item.classList.remove("d-block");
-        item.classList.add("d-none");
+        item.classList.remove("block");
+        item.classList.add("hidden");
       });
-      document.querySelector(".puzzle__question-container[data-id='" + id + "']").classList.remove("d-none");
-      document.querySelector(".puzzle__question-container[data-id='" + id + "']").classList.add("d-block");
+      document.querySelector(".puzzle__question-container[data-id='" + id + "']").classList.remove("hidden");
+      document.querySelector(".puzzle__question-container[data-id='" + id + "']").classList.add("block");
       document.querySelectorAll(".puzzle__item-first").forEach(function (item, index) {
         item.classList.remove("active");
       });
