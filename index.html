@@ -70,7 +70,7 @@
       </div>
       <div class="w-full puzzle__handle">
         <h2 class="puzzle__subtitle">Нажимайте на любой кусочек пазла и отвечайте на вопросы</h2>
-        <h1 class="puzzle__title puzzle__caption-js">Title</h1>
+        <h1 class="mb-8 text-3xl font-bold gray-800 puzzle__caption-js">Title</h1>
         <div class="puzzle__questions-container-wrapper grid w-full gap-4">
           <div class="w-full">
             <div class="puzzle__questions"></div>
@@ -90,22 +90,22 @@
         </div>
       </div>
       <div class="puzzle__message">
-        <div class="puzzle__content">
-          <h2 class="puzzle__title">Поздравляем, вы справились!</h2>
+        <div class="">
+          <h2 class="mb-8 text-3xl font-bold gray-800">Поздравляем, вы справились!</h2>
           <div class="puzzle__content">
-            <div class="puzzle__message-wrap">
-              <div class="puzzle__message-title">Получите приз!</div>
-              <div class="puzzle__message-text">Теперь вы можете скачать приз&nbsp;— анимированные стикеры для Telegram</div>
-              <a class="puzzle__message-link" href="https://t.me/addstickers/LovelyPeachy">
-                <img class="puzzle__message-link-img" src="./images/download.svg" alt="" />
-                <span class="puzzle__message-link-text">Cкачать</span>
+            <div class="w-full p-6 sm:w-8/12 sm:py-10 sm:px-8">
+              <h3 class="text-3xl font-bold w-auto sm:w-72 mb-4 sm:mb-2">Получите приз!</h3>
+              <div class="mb-24">Теперь вы можете скачать приз&nbsp;— анимированные стикеры для Telegram</div>
+              <a class="relative z-10 flex items-center" href="https://t.me/addstickers/LovelyPeachy">
+                <img class="" src="./images/download.svg" alt="" />
+                <span class="ml-4 font-bold text-green-700">Cкачать</span>
               </a>
             </div>
-            <img class="puzzle__message-bg1" src="./images/bg-1.png" alt="" />
-            <img class="puzzle__message-bg2" src="./images/bg-2.png" alt="" />
+            <img class="absolute right-4 hidden sm:block top-0" src="./images/bg-1.png" alt="" />
+            <img class="absolute right-1 bottom-0 sm:right-10" src="./images/bg-2.png" alt="" />
           </div>
-          <div class="puzzle__message-buttons">
-            <div class="puzzle__message-button-restart button button-green" onclick="location.reload();">Пройти ещё раз</div>
+          <div class="">
+            <button class="puzzle__message-button-restart button button-green" onclick="location.reload();">Пройти ещё раз</button>
           </div>
         </div>
       </div>

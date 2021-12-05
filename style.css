@@ -141,14 +141,6 @@ body {
   line-height: 22px;
 }
 
-.puzzle__title {
-  margin-bottom: 32px;
-  color: #061b36;
-  font-size: 32px;
-  font-weight: bold;
-  line-height: 42px;
-}
-
 .puzzle__item-wrap {
   display: flex;
   align-items: center;
@@ -392,13 +384,6 @@ body {
   backface-visibility: hidden;
 }
 
-.puzzle__item-second {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-}
-
 .puzzle__item-second img {
   display: block;
   width: 100%;
@@ -440,10 +425,6 @@ body {
   background: #42556c;
 }
 
-.puzzle__message-buttons {
-  display: flex;
-}
-
 .puzzle__input-container-js .puzzle__input-check {
   border: 4px solid #77bb2f;
 }
@@ -459,52 +440,6 @@ body {
   height: 300px;
   margin-bottom: 48px;
   background: #f8f8f8;
-}
-
-.puzzle__message-wrap {
-  width: 70%;
-  padding: 42px 30px;
-  padding-right: 0;
-}
-
-.puzzle__message-title {
-  width: 300px;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 32px;
-}
-
-.puzzle__message-text {
-  margin-bottom: 115px;
-  line-height: 24px;
-}
-
-.puzzle__message-link-text {
-  color: #77bb2f;
-  font-weight: bold;
-  line-height: 20px;
-}
-
-.puzzle__message-link {
-  display: flex;
-  align-items: center;
-}
-
-.puzzle__message-link-text {
-  z-index: 1;
-  margin-left: 16px;
-}
-
-.puzzle__message-bg1 {
-  position: absolute;
-  top: 0;
-  right: 16px;
-}
-
-.puzzle__message-bg2 {
-  position: absolute;
-  right: 30px;
-  bottom: 0;
 }
 
 .puzzle__content-block {
@@ -535,18 +470,8 @@ body {
     line-height: 21px;
   }
 
-  .puzzle__title {
-    font-size: 20px;
-    line-height: 28px;
-  }
-
   .puzzle__input-text {
       line-height: 24px;
-  }
-
-  .puzzle__title {
-    margin-bottom: 32px;
-    padding: 0;
   }
 
   .puzzle__subtitle {
@@ -610,10 +535,6 @@ body {
     border: none;
   }
 
-  .puzzle__message-buttons {
-    flex-direction: column;
-  }
-
   .puzzle__message-button-restart {
     height: 38px;
       line-height: 20px;
@@ -643,50 +564,6 @@ body {
     overflow: hidden;
     height: 300px;
     margin-bottom: 32px;
-  }
-
-  .puzzle__message-wrap {
-    width: 100%;
-    padding: 24px;
-  }
-
-  .puzzle__message-title {
-    width: auto;
-    font-size: 20px;
-    line-height: 24px;
-  }
-
-  .puzzle__message-text {
-    margin-bottom: 24px;
-    font-size: 14px;
-      line-height: 20px;
-  }
-
-  .puzzle__message-link-text {
-    margin-left: 16px;
-    color: #77bb2f;
-        line-height: 20px;
-  }
-
-  .puzzle__message-link {
-    position: relative;
-    z-index: 5;
-    display: flex;
-    align-items: center;
-  }
-
-  .puzzle__message-bg1 {
-    position: absolute;
-    top: 0;
-    right: 16px;
-    display: none;
-  }
-
-  .puzzle__message-bg2 {
-    position: absolute;
-    z-index: 0;
-    right: -40px;
-    bottom: -30px;
   }
 
   .puzzle__content-block {
