@@ -108,13 +108,13 @@ async function puzzleStart(response) {
       if (answer.correct) {
       }
       answerHTML =
-        '<label class="puzzle__input-container puzzle__answer-text" data-id="' +
+        '<label class="puzzle__input-container" data-id="' +
         answer.id +
-        '"><div class="puzzle__input-wrapper"><input type="radio" name="question' +
+        '"><div class="relative flex-shrink-0 box-border w-7 h-7"><input type="radio" name="question' +
         i +
         '" class="input puzzle__input"><div class="answers puzzle__input-check">' +
         check +
-        '</div></div><span class="puzzle__input-text answerText puzzle__answer ">' +
+        '</div></div><span class="self-end ml-4 text-gray-800 text-base answerText puzzle__answer">' +
         answer +
         "</span></label>";
       answers += answerHTML;
@@ -174,7 +174,7 @@ async function puzzleStart(response) {
         answer.querySelector(".puzzle__input-check").innerHTML =
           '<img class="puzzle__input-img puzzle__input-check-error" src="./images/input-checked.svg" alt="">';
         comment.classList.add("puzzle__comment");
-        comment.innerHTML = `<div class="puzzle__comment-title">Верно!</div></div></div><div class="puzzle__comment-text">Вопрос уровня ${test[question_id].difficulty}</div>`;
+        comment.innerHTML = `<div class="mb-2 text-green-600 text-base font-bold">Верно!</div></div></div><div class="puzzle__comment-text">Вопрос уровня ${test[question_id].difficulty}</div>`;
         answer.classList.add("puzzle__input-container-correct");
         document.querySelectorAll(".puzzle__input-container").forEach(function (item, index) {
           item.classList.remove("puzzle__input-container-false");
@@ -199,9 +199,9 @@ async function puzzleStart(response) {
         comment.innerText = `Попробуй еще раз!`;
         comment.classList.add("puzzle__comment-false");
         document.querySelectorAll(".puzzle__input-container").forEach(function (item, index) {
-          item.classList.remove("puzzle__input-container-false");
+          item.classList.remove("text-red-600");
         });
-        answer.classList.add("puzzle__input-container-false");
+        answer.classList.add("text-red-600");
       }
       answer.after(comment);
     });
