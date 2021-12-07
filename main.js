@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
       id = el.dataset.id;
       document.querySelector(".puzzle__questions").innerHTML = "";
       document.querySelector(".puzzle__result-num").textContent = 1;
-      document.querySelector(".puzzle__progress-caption").textContent = `11%`;
-      document.querySelector(".puzzle__progress-bar-green").style.width = `11%`;
+      document.querySelector(".puzzle__progress-caption-js").textContent = `11%`;
+      document.querySelector(".puzzle__progress-bar-green-js").style.width = `11%`;
 
       if (document.querySelectorAll(".puzzle__item.opened").length > 1) {
         for (let i = 1; i < 9; i++) {
@@ -83,16 +83,6 @@ async function puzzleStart(response) {
   let $class = "block";
   let cardClass = "active";
 
-  document.querySelector(".puzzle__items-js").innerHTML = `
-    <div class="puzzle__item opened">
-      <div class="puzzle__item-first active">
-        <div class="puzzle__item-num">1</div>
-      </div>
-      <div class="puzzle__item-second">
-        <img src="./images/1.jpg" alt="" />
-      </div>
-    </div>`;
-
   for (let i = 0; i < test.length; i++) {
     if (i !== 0) {
       $class = "hidden";
@@ -112,19 +102,19 @@ async function puzzleStart(response) {
         answer.id +
         '"><div class="relative flex-shrink-0 box-border w-7 h-7"><input type="radio" name="question' +
         i +
-        '" class="input puzzle__input"><div class="answers puzzle__input-check">' +
+        '" class="puzzle__input"><div class="answers puzzle__input-check">' +
         check +
-        '</div></div><span class="self-end ml-4 text-gray-800 text-base answerText puzzle__answer">' +
+        '</div></div><span class="self-end ml-4 text-gray-800 text-base puzzle__answer">' +
         answer +
         "</span></label>";
       answers += answerHTML;
     }
     let questionHTML = `<div class="puzzle__question-container ${$class}" data-id="${i}" data-id-backend=${i}>
                           <div>
-                              <div class="puzzle__question-title">
+                              <div class="mb-2 text-yellow-400 text-base font-bold">
                                   Вопрос ${i + 1}
                               </div>
-                              <div class="puzzle__question-caption">
+                              <div class="mb-5 pb-5 text-grey-800 sm:border-b border-solid	border-gray-200	text-base font-bold">
                                   ${question.question}
                               </div>
                           </div>
@@ -169,8 +159,8 @@ async function puzzleStart(response) {
       if (answer.textContent == test[question_id].correct_answer) {
         correctAnswersCounter++;
         document.querySelector(".puzzle__result-num").textContent = correctAnswersCounter;
-        document.querySelector(".puzzle__progress-caption").textContent = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
-        document.querySelector(".puzzle__progress-bar-green").style.width = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
+        document.querySelector(".puzzle__progress-caption-js").textContent = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
+        document.querySelector(".puzzle__progress-bar-green-js").style.width = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
         answer.querySelector(".puzzle__input-check").innerHTML =
           '<img class="puzzle__input-img puzzle__input-check-error" src="./images/input-checked.svg" alt="">';
         comment.classList.add("puzzle__comment");
