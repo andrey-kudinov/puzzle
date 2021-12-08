@@ -111,7 +111,7 @@ async function puzzleStart(response) {
     }
     let questionHTML = `<div class="puzzle__question-container ${$class}" data-id="${i}" data-id-backend=${i}>
                           <div>
-                              <div class="mb-2 text-yellow-400 text-base font-bold">
+                              <div class="mb-2 text-yellow-400 text-lg font-bold">
                                   Вопрос ${i + 1}
                               </div>
                               <div class="mb-5 pb-5 text-grey-800 sm:border-b border-solid	border-gray-200	text-base font-bold">

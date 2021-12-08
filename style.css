@@ -10,26 +10,6 @@ body {
   grid-column: main;
 }
 
-.puzzle__content {
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 30px;
-}
-
-@media screen and (min-width: 768px) {
-  .puzzle__content {
-    padding: 0 40px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .puzzle__content {
-    width: 1170px;
-    padding: 0;
-  }
-}
-
 .puzzle__info {
   margin-bottom: 16px;
 }
@@ -50,15 +30,6 @@ body {
   font-size: 18px;
   font-weight: bold;
   line-height: 26px;
-}
-
-.puzzle__subtitle {
-  margin-top: 24px;
-  margin-bottom: 8px;
-  color: #78be20;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 22px;
 }
 
 .button_green:active {
@@ -270,20 +241,6 @@ body {
   background: #42556c;
 }
 
-.puzzle__content {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 300px;
-  margin-bottom: 48px;
-  background: #f8f8f8;
-}
-
-.puzzle__content-block {
-  display: flex;
-  justify-content: space-between;
-}
-
 @media screen and (max-width: 1199px) {
   .puzzle__item {
     width: 30%;
@@ -297,27 +254,8 @@ body {
     margin: 0 auto;
   }
 
-  .button_link {
-    margin-top: 15px;
-    margin-left: 0;
-  }
-
-  .puzzle__subtitle {
-    font-size: 17px;
-    line-height: 21px;
-  }
-
-  .puzzle__subtitle {
-    margin-top: 40px;
-    padding: 0;
-  }
-
   .puzzle__input-container {
     margin-bottom: 16px;
-  }
-
-  .puzzle__comment {
-    margin-left: 32px;
   }
 
   .puzzle__item {
@@ -328,13 +266,6 @@ body {
   .puzzle__answer {
     font-size: 14px;
     line-height: 17px;
-  }
-
-  .puzzle__answer-text {
-    display: flex;
-  }
-
-  .puzzle__answer {
     align-self: center;
     padding-top: 3px;
   }
@@ -351,7 +282,7 @@ body {
 
   .puzzle__message-button-restart {
     height: 38px;
-      line-height: 20px;
+    line-height: 20px;
   }
 
   .puzzle__comment-false {
@@ -366,15 +297,5 @@ body {
   .puzzle__progress-caption {
     font-size: 15px;
     line-height: 18px;
-  }
-
-  .puzzle__content {
-    overflow: hidden;
-    height: 300px;
-    margin-bottom: 32px;
-  }
-
-  .puzzle__content-block {
-    flex-direction: column;
   }
 }
