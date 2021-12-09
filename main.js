@@ -102,7 +102,7 @@ async function puzzleStart(response) {
         answer.id +
         '"><div class="relative flex-shrink-0 box-border w-7 h-7"><input type="radio" name="question' +
         i +
-        '" class="puzzle__input"><div class="answers puzzle__input-check">' +
+        '" class="puzzle__input absolute w-1 h-1 m-0 p-0 opacity-0"><div class="answers puzzle__input-check">' +
         check +
         '</div></div><span class="self-end ml-4 text-gray-800 text-base puzzle__answer">' +
         answer +
@@ -162,7 +162,7 @@ async function puzzleStart(response) {
         document.querySelector(".puzzle__progress-caption-js").textContent = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
         document.querySelector(".puzzle__progress-bar-green-js").style.width = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
         answer.querySelector(".puzzle__input-check").innerHTML =
-          '<img class="puzzle__input-img puzzle__input-check-error" src="./images/input-checked.svg" alt="">';
+          '<img class="w-full opacity-0 object-cover	 puzzle__input-check-error" src="./images/input-checked.svg" alt="">';
         comment.classList.add("puzzle__comment");
         comment.innerHTML = `<div class="mb-2 text-green-600 text-base font-bold">Верно!</div></div></div><div class="puzzle__comment-text">Вопрос уровня ${test[question_id].difficulty}</div>`;
         answer.classList.add("puzzle__input-container-correct");
@@ -185,7 +185,7 @@ async function puzzleStart(response) {
         }
       } else {
         answer.querySelector(".puzzle__input-check").innerHTML =
-          '<img class="puzzle__input-img puzzle__input-check-error" src="./images/input-error.svg" alt="">';
+          '<img class="w-full opacity-0 object-cover	 puzzle__input-check-error" src="./images/input-error.svg" alt="">';
         comment.innerText = `Попробуй еще раз!`;
         comment.classList.add("puzzle__comment-false");
         document.querySelectorAll(".puzzle__input-container").forEach(function (item, index) {
