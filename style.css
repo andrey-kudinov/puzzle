@@ -10,19 +10,6 @@ main {
   grid-column: main;
 }
 
-.puzzle__input-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  width: auto;
-  height: auto;
-  margin-bottom: 22px;
-  cursor: pointer;
-  border-radius: 5px;
-  background: #fff;
-}
-
 .puzzle__input-check {
   width: 100%;
   height: 100%;
@@ -43,7 +30,7 @@ main {
   opacity: .7;
 }
 
-.puzzle__comment-false {
+.puzzle__comment-false-js {
   margin-top: -15px;
   margin-bottom: 10px;
   padding-left: 46px;
@@ -154,10 +141,6 @@ main {
 }
 
 @media screen and (max-width: 767px) {
-  .puzzle__input-container {
-    margin-bottom: 16px;
-  }
-
   .puzzle__item {
     width: 30%;
     height: auto;
@@ -180,7 +163,7 @@ main {
     line-height: 18px;
   }
 
-  .puzzle__comment-false {
+  .puzzle__comment-false-js {
     padding-left: 34px;
   }
 

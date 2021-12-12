@@ -95,7 +95,7 @@ const puzzleStart = async (response) => {
       // if (answer.correct) {}
 
       // const answerHTML =
-      //   `<label class="puzzle__input-container">
+      //   `<label class="puzzle__input-container-js flex mb-5 cursor-pointer">
       //     <div class="relative flex-shrink-0 box-border w-7 h-7">
       //       <input type="radio" name="question${i}" class="puzzle__input absolute w-1 h-1 m-0 p-0 opacity-0">
       //       <div class="answers puzzle__input-check"></div>
@@ -106,7 +106,7 @@ const puzzleStart = async (response) => {
       //   </label>`;
 
       const answerHTML =
-        '<label class="puzzle__input-container" data-id="' +
+        '<label class="puzzle__input-container-js flex mb-5 cursor-pointer" data-id="' +
         '"><div class="relative flex-shrink-0 box-border w-7 h-7"><input type="radio" name="question' +
         i +
         '" class="puzzle__input absolute w-1 h-1 m-0 p-0 opacity-0"><div class="answers puzzle__input-check">' + 
@@ -155,27 +155,26 @@ const puzzleStart = async (response) => {
   });
   document.querySelectorAll(".puzzle__input").forEach((item, index) => {
     item.addEventListener("change", async (e) => {
-      let question = e.target.closest(".puzzle__question-container");
-      let answer = e.target.closest(".puzzle__input-container");
-      let answer_id = answer.getAttribute("data-id");
-      let question_id = e.target.closest(".puzzle__question-container").getAttribute("data-id");
-      let question_id_backend = e.target.closest(".puzzle__question-container").getAttribute("data-id-backend");
+      const question = e.target.closest(".puzzle__question-container");
+      const answer = e.target.closest(".puzzle__input-container-js");
+      const answer_id = answer.getAttribute("data-id");
+      const question_id = e.target.closest(".puzzle__question-container").getAttribute("data-id");
+      const question_id_backend = e.target.closest(".puzzle__question-container").getAttribute("data-id-backend");
 
-      let comment = document.createElement("div");
+      const comment = document.createElement("div");
       question.querySelectorAll(".puzzle__comment").forEach((item, index) => item.remove());
-      question.querySelectorAll(".puzzle__comment-false").forEach((item, index) => item.remove());
+      question.querySelectorAll(".puzzle__comment-false-js").forEach((item, index) => item.remove());
       if (answer.textContent == test[question_id].correct_answer) {
         correctAnswersCounter++;
         document.querySelector(".puzzle__result-num").textContent = correctAnswersCounter;
         document.querySelector(".puzzle__progress-caption-js").textContent = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
         document.querySelector(".puzzle__progress-bar-green-js").style.width = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
         answer.querySelector(".puzzle__input-check").innerHTML =
-          '<img class="w-full opacity-0 object-cover	 puzzle__input-check-error" src="./images/input-checked.svg" alt="">';
+          '<img class="w-full opacity-0 object-cover" src="./images/input-checked.svg" alt="">';
         comment.classList.add("puzzle__comment");
         comment.innerHTML = `<div class="mb-2 text-green-600 text-base font-bold">Верно!</div></div></div><div class="puzzle__comment-text">Вопрос уровня ${test[question_id].difficulty}</div>`;
         answer.classList.add("puzzle__input-container-correct");
-        document.querySelectorAll(".puzzle__input-container").forEach((item, index) => item.classList.remove("puzzle__input-container-false"));
-        question.querySelectorAll(".puzzle__input-container").forEach((item, index) => item.classList.add("puzzle__input-container_disable"));
+        question.querySelectorAll(".puzzle__input-container-js").forEach((item, index) => item.classList.add("pointer-events-none"));
         document.querySelector(".puzzle__item[data-id='" + question_id + "']").classList.add("opened");
         if (correctAnswersCounter == 9) {
           document.querySelector(".puzzle__result-all").style.color = "#061b36";
@@ -189,10 +188,10 @@ const puzzleStart = async (response) => {
         }
       } else {
         answer.querySelector(".puzzle__input-check").innerHTML =
-          '<img class="w-full opacity-0 object-cover	 puzzle__input-check-error" src="./images/input-error.svg" alt="">';
+          '<img class="w-full opacity-0 object-cover" src="./images/input-error.svg" alt="">';
         comment.innerText = `Попробуй еще раз!`;
-        comment.classList.add("puzzle__comment-false");
-        document.querySelectorAll(".puzzle__input-container").forEach((item, index) => item.classList.remove("text-red-600"));
+        comment.classList.add("puzzle__comment-false-js");
+        document.querySelectorAll(".puzzle__input-container-js").forEach((item, index) => item.classList.remove("text-red-600"));
         answer.classList.add("text-red-600");
       }
       answer.after(comment);
