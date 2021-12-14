@@ -60,7 +60,7 @@ const puzzleStart = async (test) => {
   shuffle(test);
   test = test.slice(0, 8);
 
-  let $class = "block";
+  let questionClass = "block";
   let cardClass = "active";
   const puzzleItemsHTML = document.querySelector(".puzzle__items-js");
   puzzleItemsHTML.innerHTML = `
@@ -84,7 +84,7 @@ const puzzleStart = async (test) => {
     ];
 
     if (i !== 0) {
-      $class = "hidden";
+      questionClass = "hidden";
       cardClass = "";
     }
 
@@ -117,7 +117,7 @@ const puzzleStart = async (test) => {
       answers += answerHTML;
     }
 
-    const questionHTML = `<div class="puzzle__question-container ${$class}" data-id="${i}" data-id-backend=${i}>
+    const questionHTML = `<div class="puzzle__question-container ${questionClass}" data-id="${i}" data-id-backend=${i}>
         <div>
           <div class="mb-2 text-yellow-400 text-lg font-bold">
             Вопрос ${i + 1}
