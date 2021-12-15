@@ -14,49 +14,8 @@ const getTest = async (type = 27) => {
 
 const shuffle = (array) => array.sort(() => Math.random() - 0.5);
 
-document.addEventListener("DOMContentLoaded", async () => {
-  let id = 0;
-  const data = await getTest(id)
-  document.querySelectorAll(".btn-choose ").forEach((el) => {
-    el.onclick = () => {
-      id = el.dataset.id;
-      document.querySelector(".puzzle__questions").innerHTML = "";
-      document.querySelector(".puzzle__result-num").textContent = 1;
-      document.querySelector(
-        ".puzzle__progress-caption-js"
-      ).textContent = `11%`;
-      document.querySelector(
-        ".puzzle__progress-bar-green-js"
-      ).style.width = `11%`;
-
-      if (document.querySelectorAll(".puzzle__item.opened").length > 1) {
-        for (let i = 1; i < 9; i++) {
-          document
-            .querySelectorAll(".puzzle__item")
-            [i].classList.remove("opened");
-        }
-        puzzleStart(data);
-      }
-    };
-  });
-
-  puzzleStart(data);
-
-  document.querySelector(".btn-caption").onclick = () => {
-    document
-      .querySelector(".puzzle__buttons")
-      .classList.toggle("buttons-wrap_active");
-  };
-  document.addEventListener("mouseup", (e) => {
-    if (!document.querySelector(".puzzle__buttons").contains(e.target)) {
-      document
-        .querySelector(".puzzle__buttons")
-        .classList.remove("buttons-wrap_active");
-    }
-  });
-});
-
-const puzzleStart = async (test) => {
+const puzzleStart = async (id) => {
+  let test = await getTest(id);
   shuffle(test);
   test = test.slice(0, 8);
 
@@ -77,47 +36,38 @@ const puzzleStart = async (test) => {
   for (let i = 0; i < test.length; i++) {
     let answers = "";
     const question = test[i];
-    let answersArray = [
+    const answersArray = [
       test[i].correct_answer,
       test[i].incorrect_answers[0],
       test[i].incorrect_answers[1],
     ];
+    shuffle(answersArray);
 
     if (i !== 0) {
       questionClass = "hidden";
       cardClass = "";
     }
 
-    shuffle(answersArray);
 
     for (let j = 0; j < 3; j++) {
       let answer = answersArray[j];
-      // if (answer.correct) {}
-
-      // const answerHTML =
-      //   `<label class="puzzle__input-container-js flex mb-5 cursor-pointer">
-      //     <div class="relative flex-shrink-0 box-border w-7 h-7">
-      //       <input type="radio" name="question${i}" class="puzzle__input absolute w-1 h-1 m-0 p-0 opacity-0">
-      //       <div class="answers puzzle__input-check"></div>
-      //     </div>
-      //     <span class="self-end ml-4 text-gray-800 text-base puzzle__answer">
-      //       ${answer}
-      //     </span>
-      //   </label>`;
 
       const answerHTML =
-        '<label class="puzzle__input-container-js flex mb-5 cursor-pointer" data-id="' +
-        '"><div class="relative flex-shrink-0 box-border w-7 h-7"><input type="radio" name="question' +
-        i +
-        '" class="puzzle__input absolute w-1 h-1 m-0 p-0 opacity-0"><div class="answers puzzle__input-check">' +
-        '</div></div><span class="self-end ml-4 text-gray-800 text-base puzzle__answer">' +
-        answer +
-        "</span></label>";
+        `<label class="puzzle__input-container-js flex mb-5 cursor-pointer">
+          <div class="relative flex-shrink-0 box-border w-7 h-7">
+            <input type="radio" name="question${i}" class="puzzle__input absolute w-1 h-1 m-0 p-0 opacity-0">
+            <div class="answers puzzle__input-check"></div>
+          </div>
+          <span class="self-end ml-4 text-gray-800 text-base puzzle__answer">
+            ${answer}
+          </span>
+        </label>`;
 
       answers += answerHTML;
     }
 
-    const questionHTML = `<div class="puzzle__question-container ${questionClass}" data-id="${i}" data-id-backend=${i}>
+    const questionHTML = `
+      <div class="puzzle__question-container ${questionClass}" data-id="${i}">
         <div>
           <div class="mb-2 text-yellow-400 text-lg font-bold">
             Вопрос ${i + 1}
@@ -147,29 +97,25 @@ const puzzleStart = async (test) => {
   }
 
   let correctAnswersCounter = 1;
-  document.querySelectorAll(".puzzle__caption-js").forEach((item, index) => {
+  document.querySelectorAll(".puzzle__caption-js").forEach((item) => {
     item.textContent = `${test[0].category}`;
   });
-  document.querySelectorAll(".puzzle__input").forEach((item, index) => {
+  document.querySelectorAll(".puzzle__input").forEach((item) => {
     item.addEventListener("change", async (e) => {
       const question = e.target.closest(".puzzle__question-container");
       const answer = e.target.closest(".puzzle__input-container-js");
-      const answer_id = answer.getAttribute("data-id");
-      const question_id = e.target
-        .closest(".puzzle__question-container")
-        .getAttribute("data-id");
-      const question_id_backend = e.target
-        .closest(".puzzle__question-container")
-        .getAttribute("data-id-backend");
+      const question_id = e.target.closest(".puzzle__question-container")
+        .dataset.id;
 
       const comment = document.createElement("div");
-      question
-        .querySelectorAll(".puzzle__comment")
-        .forEach((item, index) => item.remove());
-      question
-        .querySelectorAll(".puzzle__comment-false-js")
-        .forEach((item, index) => item.remove());
-      if (answer.textContent == test[question_id].correct_answer) {
+      const comments = question.querySelectorAll(".puzzle__comment");
+      comments.forEach((comment) => comment.remove());
+      const falseComments = question.querySelectorAll(
+        ".puzzle__comment-false-js"
+      );
+      falseComments.forEach((item) => item.remove());
+
+      if (answer.textContent.trim() == test[question_id].correct_answer) {
         correctAnswersCounter++;
         document.querySelector(".puzzle__result-num").textContent =
           correctAnswersCounter;
@@ -182,8 +128,7 @@ const puzzleStart = async (test) => {
         answer.querySelector(".puzzle__input-check").innerHTML =
           '<img class="w-full opacity-0 object-cover" src="./images/input-checked.svg" alt="">';
         comment.classList.add("puzzle__comment");
-        comment.innerHTML = 
-          `<div class="mb-2 text-green-600 text-base font-bold">
+        comment.innerHTML = `<div class="mb-2 text-green-600 text-base font-bold">
             Верно!
           </div>
           <div class="puzzle__comment-text">
@@ -192,7 +137,7 @@ const puzzleStart = async (test) => {
         answer.classList.add("puzzle__input-container-correct");
         question
           .querySelectorAll(".puzzle__input-container-js")
-          .forEach((item, index) => item.classList.add("pointer-events-none"));
+          .forEach((item) => item.classList.add("pointer-events-none"));
         document
           .querySelector(".puzzle__item[data-id='" + question_id + "']")
           .classList.add("opened");
@@ -213,38 +158,79 @@ const puzzleStart = async (test) => {
         comment.classList.add("puzzle__comment-false-js");
         document
           .querySelectorAll(".puzzle__input-container-js")
-          .forEach((item, index) => item.classList.remove("text-red-600"));
+          .forEach((item) => item.classList.remove("text-red-600"));
         answer.classList.add("text-red-600");
       }
       answer.after(comment);
     });
   });
+
+  const puzzleItems = document.querySelectorAll(".puzzle__item");
+  puzzleItems.forEach((puzzleItem) => {
+    puzzleItem.onclick = (e) => {
+      if (!e.currentTarget.classList.contains("opened")) {
+        const id = e.currentTarget.dataset.id;
+        const questions = document.querySelectorAll(
+          ".puzzle__question-container"
+        );
+        const question = document.querySelector(
+          `.puzzle__question-container[data-id="${id}"]`
+        );
+        const puzzleItemsFront = document.querySelectorAll(
+          ".puzzle__item-first"
+        );
+
+        questions.forEach((question) => {
+          question.classList.remove("block");
+          question.classList.add("hidden");
+        });
+        question.classList.remove("hidden");
+        question.classList.add("block");
+        puzzleItemsFront.forEach((item) => item.classList.remove("active"));
+        
+        e.currentTarget
+          .querySelector(".puzzle__item-first")
+          .classList.add("active");
+      }
+    };
+  });
 };
 
-document.addEventListener("click", async function (e) {
-  for (
-    let target = e.target;
-    target && target != this;
-    target = target.parentNode
-  ) {
-    if (target.matches(".puzzle__item:not(.opened)")) {
-      const id = target.getAttribute("data-id");
-      document
-        .querySelectorAll(".puzzle__question-container")
-        .forEach((item, index) => {
-          item.classList.remove("block");
-          item.classList.add("hidden");
-        });
-      document
-        .querySelector(".puzzle__question-container[data-id='" + id + "']")
-        .classList.remove("hidden");
-      document
-        .querySelector(".puzzle__question-container[data-id='" + id + "']")
-        .classList.add("block");
-      document
-        .querySelectorAll(".puzzle__item-first")
-        .forEach((item, index) => item.classList.remove("active"));
-      target.querySelector(".puzzle__item-first").classList.add("active");
+const reset = () => {
+  document.querySelector(".puzzle__questions").innerHTML = "";
+  document.querySelector(".puzzle__result-num").textContent = 1;
+  document.querySelector(".puzzle__progress-caption-js").textContent = `11%`;
+  document.querySelector(".puzzle__progress-bar-green-js").style.width = `11%`;
+
+  if (document.querySelectorAll(".puzzle__item.opened").length > 1) {
+    for (let i = 1; i < 9; i++) {
+      document.querySelectorAll(".puzzle__item")[i].classList.remove("opened");
     }
   }
+};
+
+document.addEventListener("DOMContentLoaded", async () => {
+  puzzleStart();
+
+  document.querySelectorAll(".btn-choose ").forEach((el) => {
+    el.onclick = () => {
+      reset();
+      const id = el.dataset.id;
+      puzzleStart(id);
+    };
+  });
+
+  document.querySelector(".btn-caption").onclick = () => {
+    document
+      .querySelector(".puzzle__buttons")
+      .classList.toggle("buttons-wrap_active");
+  };
+
+  document.addEventListener("mouseup", (e) => {
+    if (!document.querySelector(".puzzle__buttons").contains(e.target)) {
+      document
+        .querySelector(".puzzle__buttons")
+        .classList.remove("buttons-wrap_active");
+    }
+  });
 });
