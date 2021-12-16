@@ -1,4 +1,4 @@
-const getTest = async (type = 27) => {
+const getQuiz = async (type = 27) => {
   const url = `https://opentdb.com/api.php?amount=30&category=${type}&type=multiple`;
   const response = await fetch(url, {
     method: "GET",
@@ -15,9 +15,8 @@ const getTest = async (type = 27) => {
 const shuffle = (array) => array.sort(() => Math.random() - 0.5);
 
 const puzzleStart = async (id) => {
-  let test = await getTest(id);
-  shuffle(test);
-  test = test.slice(0, 8);
+  const quiz = (await getQuiz(id)).slice(0, 8);
+  shuffle(quiz);
 
   let questionClass = "block";
   let cardClass = "active";
@@ -33,13 +32,13 @@ const puzzleStart = async (id) => {
     </div>
   `;
 
-  for (let i = 0; i < test.length; i++) {
+  for (let i = 0; i < quiz.length; i++) {
     let answers = "";
-    const question = test[i];
+    const currentQuiz = quiz[i];
     const answersArray = [
-      test[i].correct_answer,
-      test[i].incorrect_answers[0],
-      test[i].incorrect_answers[1],
+      currentQuiz.correct_answer,
+      currentQuiz.incorrect_answers[0],
+      currentQuiz.incorrect_answers[1],
     ];
     shuffle(answersArray);
 
@@ -50,7 +49,7 @@ const puzzleStart = async (id) => {
 
 
     for (let j = 0; j < 3; j++) {
-      let answer = answersArray[j];
+      const answer = answersArray[j];
 
       const answerHTML =
         `<label class="puzzle__input-container-js flex mb-5 cursor-pointer">
@@ -73,7 +72,7 @@ const puzzleStart = async (id) => {
             Вопрос ${i + 1}
           </div>
           <div class="mb-5 pb-5 text-grey-800 sm:border-b border-solid	border-gray-200	text-base font-bold">
-            ${question.question}
+            ${currentQuiz.question}
           </div>
         </div>
         <div>
@@ -85,7 +84,8 @@ const puzzleStart = async (id) => {
     const questionsHTML = document.querySelector(".puzzle__questions");
     questionsHTML.innerHTML += questionHTML;
 
-    const puzzleItemHTML = `<div class="puzzle__item" data-id="${i}">
+    const puzzleItemHTML = `
+      <div class="puzzle__item" data-id="${i}">
         <div class="puzzle__item-first ${cardClass}">
           <div class="puzzle__item-num">${i + 1}</div>
         </div>
@@ -98,7 +98,7 @@ const puzzleStart = async (id) => {
 
   let correctAnswersCounter = 1;
   document.querySelectorAll(".puzzle__caption-js").forEach((item) => {
-    item.textContent = `${test[0].category}`;
+    item.textContent = `${quiz[0].category}`;
   });
   document.querySelectorAll(".puzzle__input").forEach((item) => {
     item.addEventListener("change", async (e) => {
@@ -114,37 +114,43 @@ const puzzleStart = async (id) => {
         ".puzzle__comment-false-js"
       );
       falseComments.forEach((item) => item.remove());
+      const inputHTML = answer.querySelector(".puzzle__input-check")
+      const inputsContainer = question.querySelectorAll(".puzzle__input-container-js")
 
-      if (answer.textContent.trim() == test[question_id].correct_answer) {
+      if (answer.textContent.trim() == quiz[question_id].correct_answer) {
         correctAnswersCounter++;
-        document.querySelector(".puzzle__result-num").textContent =
-          correctAnswersCounter;
-        document.querySelector(
-          ".puzzle__progress-caption-js"
-        ).textContent = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
-        document.querySelector(
-          ".puzzle__progress-bar-green-js"
-        ).style.width = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
-        answer.querySelector(".puzzle__input-check").innerHTML =
-          '<img class="w-full opacity-0 object-cover" src="./images/input-checked.svg" alt="">';
+        const correctAnswersCounterHTML = document.querySelector(".puzzle__result-num");
+        correctAnswersCounterHTML.textContent = correctAnswersCounter;
+
+        const correctAnswersPercentHTML = document.querySelector(".puzzle__progress-caption-js")
+        correctAnswersPercentHTML.textContent = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
+
+        const progressHTML = document.querySelector(".puzzle__progress-bar-green-js")
+        progressHTML.style.width = `${Math.round((correctAnswersCounter * 100) / 9)}%`;
+
+        inputHTML.innerHTML ='<img class="w-full opacity-0 object-cover" src="./images/input-checked.svg" alt="">';
+
         comment.classList.add("puzzle__comment");
-        comment.innerHTML = `<div class="mb-2 text-green-600 text-base font-bold">
+        comment.innerHTML = `
+          <div class="mb-2 text-green-600 text-base font-bold">
             Верно!
           </div>
           <div class="puzzle__comment-text">
-            Вопрос уровня ${test[question_id].difficulty}
+            Вопрос уровня ${quiz[question_id].difficulty}
           </div>`;
+
         answer.classList.add("puzzle__input-container-correct");
-        question
-          .querySelectorAll(".puzzle__input-container-js")
-          .forEach((item) => item.classList.add("pointer-events-none"));
-        document
-          .querySelector(".puzzle__item[data-id='" + question_id + "']")
-          .classList.add("opened");
+
+        inputsContainer.forEach((input) => input.classList.add("pointer-events-none"));
+
+        const puzzleItem = document.querySelector(`.puzzle__item[data-id="${question_id}"]`)
+        puzzleItem.classList.add("opened");
+
         if (correctAnswersCounter == 9) {
           document.querySelector(".puzzle__result-all").style.color = "#061b36";
         }
-        if (document.querySelectorAll(".puzzle__item.opened").length == 9) {
+        const puzzleItemsOpened = document.querySelectorAll(".puzzle__item.opened")
+        if (puzzleItemsOpened.length == 9) {
           setTimeout(() => {
             document.querySelector(".buttons-wrap").style.display = "none";
             document.querySelector(".puzzle__handle").style.display = "none";
@@ -152,13 +158,11 @@ const puzzleStart = async (id) => {
           }, 1000);
         }
       } else {
-        answer.querySelector(".puzzle__input-check").innerHTML =
+        inputHTML.innerHTML =
           '<img class="w-full opacity-0 object-cover" src="./images/input-error.svg" alt="">';
         comment.innerText = `Попробуй еще раз!`;
         comment.classList.add("puzzle__comment-false-js");
-        document
-          .querySelectorAll(".puzzle__input-container-js")
-          .forEach((item) => item.classList.remove("text-red-600"));
+        inputsContainer.forEach((item) => item.classList.remove("text-red-600"));
         answer.classList.add("text-red-600");
       }
       answer.after(comment);
@@ -203,20 +207,19 @@ const reset = () => {
   document.querySelector(".puzzle__progress-bar-green-js").style.width = `11%`;
 
   if (document.querySelectorAll(".puzzle__item.opened").length > 1) {
-    for (let i = 1; i < 9; i++) {
-      document.querySelectorAll(".puzzle__item")[i].classList.remove("opened");
-    }
+    document.querySelectorAll(".puzzle__item").forEach(item => {
+      item.classList.remove("opened");
+    })
   }
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
   puzzleStart();
 
-  document.querySelectorAll(".btn-choose ").forEach((el) => {
-    el.onclick = () => {
+  document.querySelectorAll(".btn-choose ").forEach((button) => {
+    button.onclick = () => {
       reset();
-      const id = el.dataset.id;
-      puzzleStart(id);
+      puzzleStart(button.dataset.id);
     };
   });
 
