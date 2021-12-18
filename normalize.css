@@ -143,8 +143,8 @@ body {
   overflow-x: hidden;
 }
 
-* {
-  outline: none;
+button, input, select {
+  font: inherit;
 }
 
 b {

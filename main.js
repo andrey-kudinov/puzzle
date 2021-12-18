@@ -23,11 +23,15 @@ const puzzleStart = async (id) => {
   const puzzleItemsHTML = document.querySelector(".puzzle__items-js");
   puzzleItemsHTML.innerHTML = `
     <div class="puzzle__item opened">
-      <div class="puzzle__item-first active">
+      <div class="puzzle__item-first absolute w-full h-full transition-transform duration-1000 bg-gray-400 active">
         <div class="puzzle__item-num">0</div>
       </div>
       <div class="puzzle__item-second">
-        <img src="./images/1.jpg" alt="" />
+        <img 
+          src="./images/1.jpg"
+          alt="puzzle item"
+          class="block w-full h-full object-contain"
+        />
       </div>
     </div>
   `;
@@ -46,7 +50,6 @@ const puzzleStart = async (id) => {
       questionClass = "hidden";
       cardClass = "";
     }
-
 
     for (let j = 0; j < 3; j++) {
       const answer = answersArray[j];
@@ -86,11 +89,20 @@ const puzzleStart = async (id) => {
 
     const puzzleItemHTML = `
       <div class="puzzle__item" data-id="${i}">
-        <div class="puzzle__item-first ${cardClass}">
+        <div 
+          class="puzzle__item-first absolute w-full h-full transition-transform duration-1000 bg-gray-200 ${cardClass}"
+        >
           <div class="puzzle__item-num">${i + 1}</div>
         </div>
-        <div class="puzzle__item-second">
-          <img src="./images/${i + 2}.jpg" alt="">
+        <div 
+          class="puzzle__item-second transition-transform duration-1000"
+          style="backface-visibility: hidden"
+        >
+          <img 
+            src="./images/${i + 2}.jpg" 
+            alt="puzzle item"
+            class="block w-full h-full object-contain"
+          >
         </div>
       </div>`;
     puzzleItemsHTML.innerHTML += puzzleItemHTML;
@@ -132,7 +144,7 @@ const puzzleStart = async (id) => {
 
         comment.classList.add("puzzle__comment");
         comment.innerHTML = `
-          <div class="mb-2 text-green-600 text-base font-bold">
+          <div class="mb-2 text-yellow-400 text-base font-bold">
             Верно!
           </div>
           <div class="puzzle__comment-text">
@@ -223,16 +235,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
   });
 
-  document.querySelector(".btn-caption").onclick = () => {
+  document.querySelector(".btn-caption-js").onclick = () => {
     document
-      .querySelector(".puzzle__buttons")
+      .querySelector(".puzzle__buttons-js")
       .classList.toggle("buttons-wrap_active");
   };
 
   document.addEventListener("mouseup", (e) => {
-    if (!document.querySelector(".puzzle__buttons").contains(e.target)) {
+    if (!document.querySelector(".puzzle__buttons-js").contains(e.target)) {
       document
-        .querySelector(".puzzle__buttons")
+        .querySelector(".puzzle__buttons-js")
         .classList.remove("buttons-wrap_active");
     }
   });
