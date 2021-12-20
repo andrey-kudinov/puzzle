@@ -52,10 +52,6 @@ main {
   line-height: 17px;
 }
 
-.puzzle__questions-container-wrapper {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
 .puzzle__comment {
   margin-bottom: 30px;
   margin-left: 44px;
@@ -75,14 +71,6 @@ main {
 .puzzle__input-container-correct .puzzle__answer {
   color: #77bb2f;
   font-weight: bold;
-}
-
-.puzzle__item {
-  position: relative;
-  width: 118px;
-  height: 118px;
-  margin: 4px;
-  border-radius: 3px;
 }
 
 .puzzle__item-num {
@@ -119,19 +107,7 @@ main {
   display: none;
 }
 
-@media screen and (max-width: 1199px) {
-  .puzzle__item {
-    width: 30%;
-    height: auto;
-  }
-}
-
 @media screen and (max-width: 767px) {
-  .puzzle__item {
-    width: 30%;
-    height: auto;
-  }
-
   .puzzle__answer {
     font-size: 14px;
     line-height: 17px;
