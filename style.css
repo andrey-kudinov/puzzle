@@ -47,7 +47,7 @@ main {
   margin-top: -15px;
   margin-bottom: 10px;
   padding-left: 46px;
-  color: #f00;
+  color: rgb(250 204 21);
   font-size: 14px;
   line-height: 17px;
 }
@@ -69,7 +69,7 @@ main {
 }
 
 .puzzle__input-container-correct .puzzle__answer {
-  color: #77bb2f;
+  color: rgb(250 204 21);
   font-weight: bold;
 }
 
