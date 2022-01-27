@@ -22,7 +22,11 @@ const puzzleStart = async (id) => {
   let cardClass = "active";
   const puzzleItemsHTML = document.querySelector(".puzzle__items-js");
   puzzleItemsHTML.innerHTML = `
-    <div class="puzzle__item opened relative w-1/4 h-auto sm:w-24 sm:h-24 m-1 rounded">
+    <div
+      class="puzzle__item opened relative w-1/4 h-auto sm:w-24 sm:h-24 m-1 rounded"
+      data-aos="fade-up-right"
+      data-aos-once="true"
+    >
       <div class="puzzle__item-first absolute w-full h-full transition-transform duration-1000 bg-gray-400 active">
         <div class="puzzle__item-num">0</div>
       </div>
@@ -86,11 +90,26 @@ const puzzleStart = async (id) => {
       </div>`;
     const questionsHTML = document.querySelector(".puzzle__questions");
     questionsHTML.innerHTML += questionHTML;
+    const animations = [
+      'fade-up',
+      'fade-down',
+      'fade-left',
+      'fade-right',
+      'fade-up-right',
+      'fade-up-left',
+      'fade-down-right',
+      'fade-down-left'
+    ]
 
     const puzzleItemHTML = `
-      <div class="puzzle__item relative w-1/4 h-auto sm:w-24 sm:h-24 m-1 rounded" data-id="${i}">
+      <div
+        class="puzzle__item relative w-1/4 h-auto sm:w-24 sm:h-24 m-1 rounded"
+        data-id="${i}"
+        data-aos=${animations[Math.floor(Math.random()*animations.length)]}
+        data-aos-once="true"
+      >
         <div 
-          class="puzzle__item-first absolute w-full h-full transition-transform duration-1000 bg-gray-200 cursor-pointer hover:bg-gray-100 active:bg-gray-200 ${cardClass}"
+          class="puzzle__item-first absolute w-full h-full transition-transform duration-1000 bg-gray-200 cursor-pointer hover:opacity-50 active:bg-gray-200 ${cardClass}"
         >
           <div class="puzzle__item-num">${i + 1}</div>
         </div>

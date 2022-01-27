@@ -17,8 +17,8 @@
     <title>Пазл</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="normalize.css" />
+	  <link rel="stylesheet" href="./aos.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./main.js"></script>
   </head>
 
   <body class="grid text-base leading-5 gray-800 py-4 md:py-12">
@@ -100,5 +100,14 @@
         </button>
       </div>
     </main>
+
+    <script src="./aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script src="./main.js"></script>
+    <script>
+      AOS.refresh()
+    </script>
   </body>
 </html>
