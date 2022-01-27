@@ -47,7 +47,7 @@ main {
   margin-top: -15px;
   margin-bottom: 10px;
   padding-left: 46px;
-  color: rgb(250 204 21);
+  color: #facc15;
   font-size: 14px;
   line-height: 17px;
 }
@@ -69,7 +69,7 @@ main {
 }
 
 .puzzle__input-container-correct .puzzle__answer {
-  color: rgb(250 204 21);
+  color: #facc15;
   font-weight: bold;
 }
 
@@ -84,11 +84,11 @@ main {
 }
 
 .active .puzzle__item-num {
-  color: #77bb2f;
+  color: #facc15;
 }
 
-.active {
-  background: rgba(119, 187, 47, .2);
+.active.puzzle__item-first {
+  background: #fff8c7;
 }
 
 .puzzle__item-second {
