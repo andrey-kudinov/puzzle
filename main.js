@@ -24,7 +24,8 @@ const puzzleStart = async (id) => {
   puzzleItemsHTML.innerHTML = `
     <div
       class="puzzle__item opened relative w-1/4 h-auto sm:w-24 sm:h-24 m-1 rounded"
-      data-aos="fade-up-right"
+      data-aos-offset="-200"
+      data-aos="fade-down-right"
       data-aos-once="true"
     >
       <div class="puzzle__item-first absolute w-full h-full transition-transform duration-1000 bg-gray-400 active">
@@ -105,6 +106,7 @@ const puzzleStart = async (id) => {
       <div
         class="puzzle__item relative w-1/4 h-auto sm:w-24 sm:h-24 m-1 rounded"
         data-id="${i}"
+        data-aos-offset="-200"
         data-aos=${animations[Math.floor(Math.random()*animations.length)]}
         data-aos-once="true"
       >
