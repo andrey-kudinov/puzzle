@@ -27,6 +27,11 @@ const puzzleStart = async id => {
       data-aos-offset="-200"
       data-aos="fade-down-right"
       data-aos-once="true"
+      data-tilt data-tilt-reverse="true"
+      data-tilt-max="20"
+      data-tilt-scale="1.1"
+      data-tilt-speed="400"
+      data-tilt-perspective="500"
     >
       <div class="puzzle__item-first absolute w-full h-full transition-transform duration-1000 bg-gray-400 active">
         <div class="puzzle__item-num">0</div>
@@ -108,9 +113,14 @@ const puzzleStart = async id => {
         data-aos-offset="-200"
         data-aos=${animations[Math.floor(Math.random() * animations.length)]}
         data-aos-once="true"
+        data-tilt data-tilt-reverse="true"
+        data-tilt-max="20"
+        data-tilt-scale="1.1"
+        data-tilt-speed="400"
+        data-tilt-perspective="500"
       >
         <div 
-          class="puzzle__item-first absolute w-full h-full transition-transform duration-1000 bg-gray-200 cursor-pointer hover:opacity-50 active:bg-gray-200 ${cardClass}"
+          class="puzzle__item-first absolute w-full h-full transition-transform duration-1000 bg-gray-200 cursor-pointer active:bg-gray-200 ${cardClass}"
         >
           <div class="puzzle__item-num">${i + 1}</div>
         </div>
@@ -252,6 +262,16 @@ const puzzleStart = async id => {
       }
     }
   })
+
+  document.querySelector('h2').addEventListener('dblclick', () => {
+    document.querySelectorAll('.puzzle__item').forEach(item => {
+      item.classList.add('opened')
+    })
+  })
+
+  setTimeout(() => {
+    VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
+  }, 1000);
 }
 
 const reset = () => {
