@@ -305,7 +305,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const { left, top } = e.currentTarget.getBoundingClientRect()
         const x = e.clientX - left
         const y = e.clientY - top
-        console.log({x,y})
         puzzleItem.style.setProperty('--x', `${x}px`)
         puzzleItem.style.setProperty('--y', `${y}px`)
       }
