@@ -290,7 +290,7 @@ const reset = () => {
 document.addEventListener('DOMContentLoaded', async () => {
   puzzleStart()
 
-  document.querySelectorAll('.btn-choose ').forEach(button => {
+  document.querySelectorAll('.btn-choose').forEach(button => {
     button.onclick = () => {
       reset()
       puzzleStart(button.dataset.id)
@@ -298,6 +298,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   })
 
   document.querySelector('.btn-caption-js').onclick = () => {
+    const buttons = document.querySelector('.btn-group');
+    const height = buttons.scrollHeight;
+    buttons.style.setProperty('--max-height', `${height}px`);
+
     document
       .querySelector('.puzzle__buttons-js')
       .classList.toggle('buttons-wrap_active')

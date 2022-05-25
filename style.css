@@ -19,7 +19,7 @@ main {
 }
 
 .buttons-wrap_active .btn-group {
-  max-height: 1000px;
+  max-height: var(--max-height);
   margin-bottom: 12px;
 }
 
