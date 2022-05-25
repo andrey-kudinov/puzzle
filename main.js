@@ -271,6 +271,18 @@ const puzzleStart = async id => {
 
   setTimeout(() => {
     VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
+
+    puzzleItems.forEach(puzzleItem => {
+      const puzzleItems = document.querySelectorAll('.puzzle__item-first')
+
+      puzzleItem.onmousemove = e => {
+        const { left, top } = e.currentTarget.getBoundingClientRect()
+        const x = e.clientX - left
+        const y = e.clientY - top
+        puzzleItem.style.setProperty('--x', `${x}px`)
+        puzzleItem.style.setProperty('--y', `${y}px`)
+      }
+    })
   }, 1000);
 }
 
@@ -296,20 +308,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       puzzleStart(button.dataset.id)
     }
   })
-
-  setTimeout(() => {
-    const puzzleItems = document.querySelectorAll('.puzzle__item-first')
-    
-    puzzleItems.forEach(puzzleItem => {
-      puzzleItem.onmousemove = e => {
-        const { left, top } = e.currentTarget.getBoundingClientRect()
-        const x = e.clientX - left
-        const y = e.clientY - top
-        puzzleItem.style.setProperty('--x', `${x}px`)
-        puzzleItem.style.setProperty('--y', `${y}px`)
-      }
-    })
-  }, 1000);
 
   document.querySelector('.btn-caption-js').onclick = () => {
     const buttons = document.querySelector('.btn-group');
