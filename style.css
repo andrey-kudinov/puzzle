@@ -83,6 +83,28 @@ main {
   line-height: 32px;
 }
 
+.puzzle__item-first:not(:first-child) {
+  position: relative;
+  overflow: hidden;
+}
+
+.puzzle__item-first:before {
+  --size: 0;
+  content: '';
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(circle closest-side, #facc15, transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease;
+}
+
+.puzzle__item-first:hover:before {
+  --size: 4rem;
+}
+
 .active .puzzle__item-num {
   color: #facc15;
 }

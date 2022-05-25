@@ -23,7 +23,7 @@ const puzzleStart = async id => {
   const puzzleItemsHTML = document.querySelector('.puzzle__items-js')
   puzzleItemsHTML.innerHTML = `
     <div
-      class="puzzle__item opened relative w-1/4 h-auto sm:w-24 sm:h-24 m-1 rounded"
+      class="puzzle__item opened relative w-1/4 h-auto sm:w-24 sm:h-24 m-1 rounded overflow-hidden"
       data-aos-offset="-200"
       data-aos="fade-down-right"
       data-aos-once="true"
@@ -108,7 +108,7 @@ const puzzleStart = async id => {
 
     const puzzleItemHTML = `
       <div
-        class="puzzle__item relative w-1/4 h-auto sm:w-24 sm:h-24 m-1 rounded"
+        class="puzzle__item relative w-1/4 h-auto sm:w-24 sm:h-24 m-1 rounded overflow-hidden"
         data-id="${i}"
         data-aos-offset="-200"
         data-aos=${animations[Math.floor(Math.random() * animations.length)]}
@@ -297,21 +297,35 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   })
 
+  setTimeout(() => {
+    const puzzleItems = document.querySelectorAll('.puzzle__item-first')
+    
+    puzzleItems.forEach(puzzleItem => {
+      puzzleItem.onmousemove = e => {
+        const { left, top } = e.currentTarget.getBoundingClientRect()
+        const x = e.clientX - left
+        const y = e.clientY - top
+        console.log({x,y})
+        puzzleItem.style.setProperty('--x', `${x}px`)
+        puzzleItem.style.setProperty('--y', `${y}px`)
+      }
+    })
+  }, 1000);
+
   document.querySelector('.btn-caption-js').onclick = () => {
     const buttons = document.querySelector('.btn-group');
     const height = buttons.scrollHeight;
     buttons.style.setProperty('--max-height', `${height}px`);
 
-    document
-      .querySelector('.puzzle__buttons-js')
-      .classList.toggle('buttons-wrap_active')
+    const button = document.querySelector('.puzzle__buttons-js');
+    button.classList.toggle('buttons-wrap_active');
   }
 
-  document.addEventListener('mouseup', e => {
+  document.onmouseup = e => {
     if (!document.querySelector('.puzzle__buttons-js').contains(e.target)) {
       document
         .querySelector('.puzzle__buttons-js')
         .classList.remove('buttons-wrap_active')
     }
-  })
+  }
 })
